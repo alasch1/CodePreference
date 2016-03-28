@@ -1,0 +1,23 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+log/
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#logs
+*.log
+*.log-*
+
+# Other
+*.class
+*.orig
+
+*/dependency-reduced-pom.xml
