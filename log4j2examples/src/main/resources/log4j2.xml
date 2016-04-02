@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration  monitorInterval="300">
+<Configuration  monitorInterval="300" status="warn" packages="com.alasch1.logging.plugins">
 	<Properties>
-		<property name="logFile">appName</property>
+		<property name="logFile">... desired log file name ...</property>
 		<property name="logDir">logs</property>
 		<property name="tag1">${bundle:contextTags:tag1}</property>
 		<property name="tag2">${bundle:contextTags:tag2}</property>
@@ -28,7 +28,7 @@
 			<Filters>
 				<!-- Put here the application errors pattern class, which implements CsplErrorsPatterns interface instead of the 
 						default empty errors pattern DefaultNoErrorPattern in format <package>.<classname> -->
-				<ErrorPatternFilter errorsPatterns="com.att.tlv.cspl.infra.logging.plugins.DefaultNoErrorPattern" dropOnMatch="true"/>
+				<ErrorPatternsFilter errorsPatterns="com.alasch1.logging.plugins.DefaultNoErrorPattern" dropOnMatch="true"/>
 			</Filters>
 			<PatternLayout> 
 				<header>
@@ -54,7 +54,7 @@
 			<Filters>
 				<!-- Put here the application errors pattern class, which implements CsplErrorsPatterns interface instead of the 
 						default empty errors pattern DefaultNoErrorPattern in format <package>.<classname> -->
-				<ErrorPatternFilter errorsPatterns="com.att.tlv.cspl.infra.logging.plugins.DefaultNoErrorPattern" dropOnMatch="true"/>
+				<ErrorPatternsFilter errorsPatterns="com.alasch1.logging.plugins.DefaultNoErrorPattern" dropOnMatch="true"/>
 				<ThresholdFilter level="error"/>
 			</Filters>
 			<PatternLayout> 

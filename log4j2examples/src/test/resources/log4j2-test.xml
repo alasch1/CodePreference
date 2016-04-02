@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration  monitorInterval="300" status="warn" packages="com.alasch1.codepreference.log4j2examples.logging.plugins">
+<Configuration  monitorInterval="300" status="warn" packages="com.alasch1.logging.plugins">
 	<Properties>
 		<property name="logFile">tests</property>
 		<property name="logDir">logs</property>
@@ -34,7 +34,7 @@
 		<RollingFile name="AppLog" fileName="${logDir}/${logFile}.log"
 			filePattern="${logDir}/${logFile}-%d{dd-MM-yyyy}-%i.log">
 			<Filters>
-				<ErrorPatternsFilter errorsPatterns="com.alasch1.codepreference.log4j2examples.logging.mocks.ErrorsPatterns4Tests" dropOnMatch="true"/>
+				<ErrorPatternsFilter errorsPatterns="com.alasch1.logging.mocks.ErrorsPatterns4Tests" dropOnMatch="true"/>
 			</Filters>
 			<PatternLayout> 
 				<header>
@@ -58,7 +58,7 @@
 		<RollingFile name="ErrorsLog" fileName="${errLogDir}/${errLogFile}.log"
 			filePattern="${errLogDir}/${errLogFile}-%d{dd-MM-yyyy}.log">
 			<Filters>
-				<ErrorPatternsFilter errorsPatterns="com.alasch1.codepreference.log4j2examples.logging.mocks.ErrorsPatterns4Tests" dropOnMatch="false"/>
+				<ErrorPatternsFilter errorsPatterns="com.alasch1.logging.mocks.ErrorsPatterns4Tests" dropOnMatch="false"/>
 				<ThresholdFilter level="error"/>
 			</Filters>
 			<PatternLayout> 
