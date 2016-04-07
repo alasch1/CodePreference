@@ -9,12 +9,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alasch1.codepreference.commons.testutils.Log4jHelper;
-import com.alasch1.codepreference.commons.testutils.VerbalTestExecutor;
-import com.alasch1.logging.impl.LogConfiguration;
-import com.alasch1.logging.impl.LogContextHandler;
 import com.alasch1.logging.mocks.AppConfigurationMock;
 import com.alasch1.logging.mocks.ErrorsPatterns4Tests;
+import com.alasch1.testutils.Log4jHelper;
+import com.alasch1.testutils.VerbalTestExecutor;
 
 public class TestErrPatterns {
 

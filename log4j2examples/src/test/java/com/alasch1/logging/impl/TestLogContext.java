@@ -11,11 +11,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alasch1.codepreference.commons.testutils.VerbalTestExecutor;
 import com.alasch1.logging.api.LogContext;
-import com.alasch1.logging.impl.LogConfiguration;
-import com.alasch1.logging.impl.LogContextHandler;
 import com.alasch1.logging.mocks.AppConfigurationMock;
+import com.alasch1.testutils.VerbalTestExecutor;
 
 public class TestLogContext {
 	

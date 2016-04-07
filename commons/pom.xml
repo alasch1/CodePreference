@@ -9,7 +9,7 @@
 	</parent>
 	
 	<groupId>com.alasch1.codepreference.commons</groupId>
-	<artifactId>commons</artifactId>	
+	<artifactId>codepref-commons</artifactId>	
 	<name>commons</name>
 	<description>common utils and classes</description>
 	<packaging>jar</packaging>

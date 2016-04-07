@@ -7,11 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
-import com.alasch1.codepreference.commons.configuration.api.AppConfiguration;
-import com.alasch1.codepreference.commons.testutils.StringAppender4Tests;
-import com.alasch1.codepreference.commons.testutils.VerbalTestExecutor;
+import com.alasch1.configuration.api.AppConfiguration;
 import com.alasch1.logging.mocks.AppConfigurationMock;
-import com.alasch1.logging.plugins.ConfigConverter;
+import com.alasch1.testutils.StringAppender4Tests;
+import com.alasch1.testutils.VerbalTestExecutor;
 
 
 public class TestConfigConverter {

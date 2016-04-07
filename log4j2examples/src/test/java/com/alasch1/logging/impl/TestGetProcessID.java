@@ -4,8 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.alasch1.codepreference.commons.testutils.VerbalTestExecutor;
-import com.alasch1.logging.impl.JvmProcessID;
+import com.alasch1.testutils.VerbalTestExecutor;
 
 public class TestGetProcessID {
 

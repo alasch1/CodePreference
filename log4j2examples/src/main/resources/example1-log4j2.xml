@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+
+	<Appenders>
+		<Console name="C1">
+			<!-- ThreadContextMap -->
+			<PatternLayout>
+				<pattern>
+<!-- 					C1: %d %level{length=2} [%X{"USER"}|%X{"EXAMPLE"} (%c{1.}.%M:%L) - %m%n -->
+					C1: %d %level{length=2} [%X] (%c{1.}.%M:%L) - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+		
+		<Console name="C2">
+			<!-- ThreadContextMap -->
+			<PatternLayout>
+				<pattern>
+					C2: %d %level{length=2} [%X{USER}|%X{EXAMPLE}] (%c{1.}.%M:%L) - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+		
+		<Console name="C3">
+			<!-- ThreadContextStack -->
+			<PatternLayout>
+				<pattern>
+					C3: %d %level{length=2} %x (%c{1.}.%M:%L) - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>		
+	</Appenders>
+
+	<Loggers>
+		<root level="trace">
+			<appenderRef ref="C1" />
+			<appenderRef ref="C2" />
+			<appenderRef ref="C3" />
+		</root>
+
+		<logger name="com.alasch1.logging.examples" level="trace" additivity="false">
+			<appenderRef ref="C1" />
+			<appenderRef ref="C2" />
+			<appenderRef ref="C3" />
+		</logger>
+	</Loggers>
+	
+</Configuration>

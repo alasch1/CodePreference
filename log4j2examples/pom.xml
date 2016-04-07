@@ -8,16 +8,16 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.alasch1.codepreference.log4j2</groupId>
-	<artifactId>log4j2examples</artifactId>
+	<groupId>com.alasch1.codepreference.log4j2examples</groupId>
+	<artifactId>codepref-log4j2</artifactId>
 	<name>log4j2examples</name>
 	<description>sources for log4j2 posts</description>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.alasch1.codepreference</groupId>
-			<artifactId>commons</artifactId>
+			<groupId>com.alasch1.codepreference.commons</groupId>
+			<artifactId>codepref-commons</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
