@@ -6,7 +6,6 @@
 			<!-- ThreadContextMap -->
 			<PatternLayout>
 				<pattern>
-<!-- 					C1: %d %level{length=2} [%X{"USER"}|%X{"EXAMPLE"} (%c{1.}.%M:%L) - %m%n -->
 					C1: %d %level{length=2} [%X] (%c{1.}.%M:%L) - %m%n
 				</pattern>
 			</PatternLayout>
