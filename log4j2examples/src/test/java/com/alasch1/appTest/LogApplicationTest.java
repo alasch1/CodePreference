@@ -31,7 +31,7 @@ public class LogApplicationTest {
 	}
 	
 	private static void printBulkMessages() {
-		LogContext ctxt = LogContextHandler.createContext("conference-1");
+		LogContext ctxt = LogContextHandler.createContext("user-1");
 		
 		try {			
 			LOG.info("ApplicationTest Start");
@@ -51,7 +51,7 @@ public class LogApplicationTest {
 	}
 	
 	private static void printMessageExample() {
-		LogContext ctxt = LogContextHandler.createContext("conference-2");
+		LogContext ctxt = LogContextHandler.createContext("user-2");
 		
 		try {			
 			LOG.info("ApplicationTest Start");

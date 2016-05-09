@@ -76,8 +76,7 @@
 			<appenderRef ref="RollingFile" />
 		</root>
 
-		<logger name="com.att.tlv.cspl" level="info"
-			additivity="false">
+		<logger name="com.alasch1.logging.examples" level="info" additivity="false">
 			<appenderRef ref="SysOut" />
 			<appenderRef ref="RollingFile" />
 		</logger>

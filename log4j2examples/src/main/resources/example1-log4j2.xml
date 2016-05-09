@@ -31,13 +31,13 @@
 	</Appenders>
 
 	<Loggers>
-		<root level="trace">
+		<root level="info">
 			<appenderRef ref="C1" />
 			<appenderRef ref="C2" />
 			<appenderRef ref="C3" />
 		</root>
 
-		<logger name="com.alasch1.logging.examples" level="trace" additivity="false">
+		<logger name="com.alasch1.logging.examples" level="debug" additivity="false">
 			<appenderRef ref="C1" />
 			<appenderRef ref="C2" />
 			<appenderRef ref="C3" />

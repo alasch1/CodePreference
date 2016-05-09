@@ -67,9 +67,12 @@
 
 	<Loggers>
 		<root level="info">
+			<appenderRef ref="SysOut" />
+			<appenderRef ref="AppLog" />
+			<appenderRef ref="ErrorsLog" />
 		</root>
 		
-		<logger name="com.att.tlv.cspl" level="debug" additivity="false">
+		<logger name="com.alasch1.logging.examples" level="debug" additivity="false">
 			<appenderRef ref="SysOut" />
 			<appenderRef ref="AppLog" />
 			<appenderRef ref="ErrorsLog" />

@@ -128,7 +128,7 @@ public class LogContextHandler implements LogContext {
 	}
 
 	public void clear() {
-		ThreadContext.clearAll();
+		ThreadContext.removeStack();
 	}
 	
 	public long getProcessId() {
