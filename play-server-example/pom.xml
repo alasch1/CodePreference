@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+	<parent>
+		<groupId>com.alasch1.codepreference</groupId>
+		<artifactId>codepreference</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+  <groupId>com.alasch1.codepreference.log4j2examples</groupId>
+  <artifactId>play-server-example</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+ 
+	<properties>
+		<activator.version>1.3.5</activator.version>
+		<build.script>build_app.bat</build.script>
+	</properties>
+	
+	<!--Needed for the SBT-->
+	<dependencies>
+		<dependency>
+			<groupId>com.typesafe.activator</groupId>
+			<artifactId>activator-launcher</artifactId>
+			<version>${activator.version}</version>
+		</dependency>
+	</dependencies>
+	
+  <build>
+    <plugins>
+    
+ 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					
+					<!-- Execute activator -->
+					<execution>
+						<id>execute.sbt</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>						
+						<configuration>
+							<executable>${build.script}</executable>
+							<workingDirectory>${project.basedir}</workingDirectory>                      
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+    </plugins>
+  </build>
+</project>
