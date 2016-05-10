@@ -7,9 +7,11 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-  <groupId>com.alasch1.codepreference.log4j2examples</groupId>
-  <artifactId>play-server-example</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<groupId>com.alasch1.codepreference.play-server-example</groupId>
+	<artifactId>codepref-play-server</artifactId>
+	<name>play-server-example</name>
+	<description>sources for play posts</description>
+	<packaging>jar</packaging>
  
 	<properties>
 		<build.script>build_app.bat</build.script>
