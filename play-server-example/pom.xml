@@ -12,18 +12,8 @@
   <version>0.0.1-SNAPSHOT</version>
  
 	<properties>
-		<activator.version>1.3.5</activator.version>
 		<build.script>build_app.bat</build.script>
 	</properties>
-	
-	<!--Needed for the SBT-->
-	<dependencies>
-		<dependency>
-			<groupId>com.typesafe.activator</groupId>
-			<artifactId>activator-launcher</artifactId>
-			<version>${activator.version}</version>
-		</dependency>
-	</dependencies>
 	
   <build>
     <plugins>
