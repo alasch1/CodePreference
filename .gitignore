@@ -21,3 +21,4 @@ target/
 *.orig
 
 */dependency-reduced-pom.xml
+play-server-example/public/client/*
