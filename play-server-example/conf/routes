@@ -14,7 +14,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Map static html file example
 GET /example1						controllers.Assets.at(path="/public/html", file="example1.html")
-GET /example2						controllers.Assets.at(path="/html", file="example2.html")
 
 # abgularjs client example
 GET /								controllers.Assets.at(path="/public", file ="index.html")
