@@ -17,3 +17,6 @@ libraryDependencies ++= Seq(
   javaWs
 )
 
+mappings in Universal ++= directory("scripts")
+
+
