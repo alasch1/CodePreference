@@ -1,3 +1,5 @@
+import NativePackagerHelper._
+
 name := """play-server-example"""
 
 version := "1.0-SNAPSHOT"
