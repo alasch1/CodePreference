@@ -1,0 +1,18 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("CodePreference - Example") {
+
+	<h1>@message</h1>
+	<p>Play template is compiled into html file</p>
+	<p>It will be embedded into the jar</p>
+
+}

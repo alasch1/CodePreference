@@ -19,5 +19,15 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(index.render("Your new application is ready."));
     }
+    
+    public Result exactRoute(String message) {
+        return ok(examplepage.render("This is the exact route:" + message));
+    }
+
+    public Result insensitiveRoute(String dummy) {
+    	// Extract query parameter case-insensitive
+    	String message = InputRequestHelper.getInputQueryParameter("mymessage", request(), true);
+        return ok(examplepage.render("This is insensitive route:" + message));
+    }
 
 }
