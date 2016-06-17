@@ -22,3 +22,5 @@ target/
 
 */dependency-reduced-pom.xml
 play-server-example/public/client/*
+play-server-example/.cache-main
+play-server-example/.cache-tests
