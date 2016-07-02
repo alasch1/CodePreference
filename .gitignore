@@ -24,4 +24,4 @@ target/
 play-server-example/public/client/*
 play-server-example/.cache-main
 play-server-example/.cache-tests
-play-server-example/bin/*
+play-server-example/bin/
