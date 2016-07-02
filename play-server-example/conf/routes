@@ -4,6 +4,8 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+GET /startSession            controllers.HomeController.startSession
+GET /restoreSession            controllers.HomeController.restoreSession
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 

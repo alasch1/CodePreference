@@ -23,4 +23,7 @@ libraryDependencies ++= Seq(
 
 mappings in Universal ++= directory("scripts")
 
-
+val lombokVersion = "1.16.6"
+libraryDependencies ++= Seq(
+		"org.projectlombok" % "lombok" % lombokVersion
+)

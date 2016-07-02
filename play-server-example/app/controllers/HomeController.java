@@ -2,8 +2,13 @@ package controllers;
 
 import java.io.ByteArrayInputStream;
 
+import javax.inject.Inject;
+
+import play.Logger;
 import play.api.Play;
 import play.mvc.*;
+import sessionprovider.SessionDTO;
+import sessionprovider.SessionInCashProvider;
 import views.html.*;
 
 /**
@@ -13,6 +18,11 @@ import views.html.*;
 public class HomeController extends Controller {
 
 	static private final String CSV_FILE = "demo.csv";
+	static private final String DEMO_SESSION = "demo-session";
+	
+	@Inject
+	private SessionInCashProvider sessionProvider;
+	
     /**
      * An action that renders an HTML page with a welcome message.
      * The configuration in the <code>routes</code> file means that
@@ -21,6 +31,21 @@ public class HomeController extends Controller {
      */
     public Result index() {
         return ok(index.render("Your new application is ready."));
+    }
+    
+    public Result startSession() {
+    	SessionDTO session = sessionProvider.startSession("one","two");
+    	String encryptedSession = sessionProvider.encryptSession(session);
+    	ctx().session().put(DEMO_SESSION, encryptedSession);
+    	Logger.info("Started {}", session);
+    	return ok("Session was started");
+    }
+    
+    public Result restoreSession() {
+    	String encryptedSession = ctx().session().get(DEMO_SESSION);
+    	SessionDTO restoredSession = sessionProvider.restoreSession(encryptedSession);
+    	Logger.info("Restored {}", restoredSession);
+    	return ok("Session was restored");
     }
     
     public Result exactRoute(String message) {

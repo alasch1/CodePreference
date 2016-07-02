@@ -1,9 +1,15 @@
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+
+import customization.JsonStartupHandler;
+
 import java.time.Clock;
 
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
+import sessionprovider.SessionInCashProvider;
+import sessionprovider.SessionProvider;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -26,6 +32,14 @@ public class Module extends AbstractModule {
         bind(ApplicationTimer.class).asEagerSingleton();
         // Set AtomicCounter as the implementation for Counter.
         bind(Counter.class).to(AtomicCounter.class);
+        // My code
+        //bind(SessionProvider.class).to(SessionInCashProvider.class);
+		bind(JsonStartupHandler.class).asEagerSingleton();
+    }
+    
+    @Provides
+    public SessionProvider sessionProvider() {
+    	return new SessionInCashProvider();
     }
 
 }
