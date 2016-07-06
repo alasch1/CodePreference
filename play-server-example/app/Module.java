@@ -2,14 +2,14 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 
 import customization.JsonStartupHandler;
+import guiceExamples.sessionProvider.SessionInCacheProvider;
+import guiceExamples.sessionProvider.SessionProvider;
 
 import java.time.Clock;
 
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
-import sessionprovider.SessionInCashProvider;
-import sessionprovider.SessionProvider;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -37,9 +37,9 @@ public class Module extends AbstractModule {
 		bind(JsonStartupHandler.class).asEagerSingleton();
     }
     
-    @Provides
-    public SessionProvider sessionProvider() {
-    	return new SessionInCashProvider();
-    }
+//    @Provides
+//    public SessionProvider sessionProvider() {
+//    	return new SessionInCacheProvider();
+//    }
 
 }

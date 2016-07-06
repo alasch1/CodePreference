@@ -1,15 +1,19 @@
 package controllers;
 
+import guiceExamples.cacheInspector.CacheInspector;
+import guiceExamples.sessionProvider.SessionDTO;
+import guiceExamples.sessionProvider.SessionInCacheProvider;
+
 import java.io.ByteArrayInputStream;
 
 import javax.inject.Inject;
 
 import play.Logger;
 import play.api.Play;
-import play.mvc.*;
-import sessionprovider.SessionDTO;
-import sessionprovider.SessionInCashProvider;
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.examplepage;
+import views.html.index;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -21,7 +25,10 @@ public class HomeController extends Controller {
 	static private final String DEMO_SESSION = "demo-session";
 	
 	@Inject
-	private SessionInCashProvider sessionProvider;
+	private SessionInCacheProvider sessionProvider;
+	
+	@Inject 
+	private CacheInspector cacheInspector;
 	
     /**
      * An action that renders an HTML page with a welcome message.
@@ -70,4 +77,15 @@ public class HomeController extends Controller {
 				String.format("attachment; filename=\"%s\"", CSV_FILE));
 		return ok(Play.current().getFile(CSV_FILE)).as("text/csv");
     }
+    
+	/**
+	 * Gets the token info for the current session from cache. Serves for maintenance. 
+	 * 
+	 * @return
+	 */
+	public Result getCacheData() {
+			Object cacheData = cacheInspector.getValue("DEMO-KEY");
+			return ok(String.format("Cache content : %s", cacheData));		
+	}
+
 }

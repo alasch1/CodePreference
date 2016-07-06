@@ -1,18 +1,18 @@
-package sessionprovider;
+package guiceExamples.sessionProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import play.cache.CacheApi;
 
-@Singleton
-public class SessionInCashProvider implements SessionProvider {
+//@Singleton
+public class SessionInCacheProvider implements SessionProvider {
 
-	@Inject// @NamedCache("token-cache")
+	@Inject
 	private CacheApi cache;
 	
-	@Inject
-	public SessionInCashProvider() {
+//	@Inject
+	public SessionInCacheProvider() {
 	}
 
 	@Override

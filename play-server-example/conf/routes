@@ -6,6 +6,8 @@
 GET     /                           controllers.HomeController.index
 GET /startSession            controllers.HomeController.startSession
 GET /restoreSession            controllers.HomeController.restoreSession
+GET /cache  controllers.HomeController.getCacheData
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 
