@@ -2,11 +2,16 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 
 import customization.JsonStartupHandler;
+import guiceExamples.cacheInspector.CacheInspector;
+import guiceExamples.cacheInspector.FakeCacheInspector;
+import guiceExamples.cacheInspector.RuntimeCacheInspector;
 import guiceExamples.sessionProvider.SessionInCacheProvider;
 import guiceExamples.sessionProvider.SessionProvider;
 
 import java.time.Clock;
 
+import play.Configuration;
+import play.Environment;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
@@ -23,6 +28,14 @@ import services.Counter;
  */
 public class Module extends AbstractModule {
 
+	private final Environment env;
+    //private final Configuration configuration;
+   
+	public Module(Environment env, Configuration configuration) {
+		this.env = env;
+		//this.configuration = configuration;
+	}
+	
     @Override
     public void configure() {
         // Use the system clock as the default implementation of Clock
@@ -35,6 +48,13 @@ public class Module extends AbstractModule {
         // My code
         //bind(SessionProvider.class).to(SessionInCashProvider.class);
 		bind(JsonStartupHandler.class).asEagerSingleton();
+ 
+		if (env.isTest() ) {
+			bind(CacheInspector.class).to(FakeCacheInspector.class);
+		}
+		else {
+			bind(CacheInspector.class).to(RuntimeCacheInspector.class);			
+		}
     }
     
 //    @Provides
