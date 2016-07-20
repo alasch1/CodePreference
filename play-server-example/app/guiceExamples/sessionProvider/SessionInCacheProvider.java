@@ -1,15 +1,16 @@
 package guiceExamples.sessionProvider;
 
+import guiceExamples.cache.CacheProvider;
+
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import play.cache.CacheApi;
 
 //@Singleton
 public class SessionInCacheProvider implements SessionProvider {
 
-	@Inject
-	private CacheApi cache;
+	@Inject 
+	private CacheProvider cacheProvider;
 	
 //	@Inject
 	public SessionInCacheProvider() {
@@ -29,7 +30,7 @@ public class SessionInCacheProvider implements SessionProvider {
 		String encryptedSession = String.format("%s;%s",
 				session.getUuid(), 
 				session.getRecentTimestamp());
-		cache.set(session.getUuid(), session.getData());
+		getCache().set(session.getUuid(), session.getData());
 		return encryptedSession;
 	}
 
@@ -39,9 +40,13 @@ public class SessionInCacheProvider implements SessionProvider {
 		SessionDTO restoredSession = new SessionDTO();
 		restoredSession.setUuid(values[0]);
 		restoredSession.setRecentTimestamp(values[1]);
-		String sessionData = cache.get(restoredSession.getUuid());
+		String sessionData = getCache().get(restoredSession.getUuid());
 		restoredSession.setData(sessionData);
 		return restoredSession;		
 	}
 
+	protected CacheApi getCache() {
+		return cacheProvider.getCache();
+	}
+	
 }

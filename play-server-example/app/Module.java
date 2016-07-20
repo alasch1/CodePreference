@@ -1,12 +1,5 @@
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-
-import customization.JsonStartupHandler;
-import guiceExamples.cacheInspector.CacheInspector;
-import guiceExamples.cacheInspector.FakeCacheInspector;
-import guiceExamples.cacheInspector.RuntimeCacheInspector;
-import guiceExamples.sessionProvider.SessionInCacheProvider;
-import guiceExamples.sessionProvider.SessionProvider;
+import guiceExamples.cache.CacheProvider;
+import guiceExamples.cache.RuntimeCacheProvider;
 
 import java.time.Clock;
 
@@ -15,6 +8,10 @@ import play.Environment;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
+
+import com.google.inject.AbstractModule;
+
+import customization.JsonStartupHandler;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -49,11 +46,8 @@ public class Module extends AbstractModule {
         //bind(SessionProvider.class).to(SessionInCashProvider.class);
 		bind(JsonStartupHandler.class).asEagerSingleton();
  
-		if (env.isTest() ) {
-			bind(CacheInspector.class).to(FakeCacheInspector.class);
-		}
-		else {
-			bind(CacheInspector.class).to(RuntimeCacheInspector.class);			
+		if (!env.isTest() ) {
+			bind(CacheProvider.class).to(RuntimeCacheProvider.class);			
 		}
     }
     

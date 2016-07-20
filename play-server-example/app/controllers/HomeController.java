@@ -1,6 +1,6 @@
 package controllers;
 
-import guiceExamples.cacheInspector.CacheInspector;
+import guiceExamples.cache.CacheProvider;
 import guiceExamples.sessionProvider.SessionDTO;
 import guiceExamples.sessionProvider.SessionInCacheProvider;
 
@@ -14,7 +14,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.examplepage;
 import views.html.index;
-
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -28,7 +27,7 @@ public class HomeController extends Controller {
 	private SessionInCacheProvider sessionProvider;
 	
 	@Inject 
-	private CacheInspector cacheInspector;
+	private CacheProvider cacheProvider;
 	
     /**
      * An action that renders an HTML page with a welcome message.
@@ -84,7 +83,7 @@ public class HomeController extends Controller {
 	 * @return
 	 */
 	public Result getCacheData() {
-			Object cacheData = cacheInspector.getValue("DEMO-KEY");
+			Object cacheData = cacheProvider.getCache().get("DEMO-KEY");
 			return ok(String.format("Cache content : %s", cacheData));		
 	}
 
