@@ -18,7 +18,8 @@ EclipseKeys.withSource := true
 libraryDependencies ++= Seq(
   javaJdbc,
   cache,
-  javaWs
+  javaWs,
+  javaJpa  
 )
 
 mappings in Universal ++= directory("scripts")
