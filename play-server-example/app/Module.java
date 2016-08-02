@@ -10,6 +10,7 @@ import services.AtomicCounter;
 import services.Counter;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.ImplementedBy;
 
 import customization.JsonStartupHandler;
 
@@ -26,11 +27,9 @@ import customization.JsonStartupHandler;
 public class Module extends AbstractModule {
 
 	private final Environment env;
-    //private final Configuration configuration;
    
 	public Module(Environment env, Configuration configuration) {
 		this.env = env;
-		//this.configuration = configuration;
 	}
 	
     @Override
@@ -43,17 +42,14 @@ public class Module extends AbstractModule {
         // Set AtomicCounter as the implementation for Counter.
         bind(Counter.class).to(AtomicCounter.class);
         // My code
-        //bind(SessionProvider.class).to(SessionInCashProvider.class);
+        // The call is commented, since SessionProvider is injected with @ImplementedBy annotation
+        //bind(SessionProvider.class).to(SessionInCashProvider.class); 
 		bind(JsonStartupHandler.class).asEagerSingleton();
  
+		// Injection for test is done with GuiceApplicationBuilder
 		if (!env.isTest() ) {
 			bind(CacheProvider.class).to(RuntimeCacheProvider.class);			
 		}
     }
-    
-//    @Provides
-//    public SessionProvider sessionProvider() {
-//    	return new SessionInCacheProvider();
-//    }
 
 }

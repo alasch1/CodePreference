@@ -14,6 +14,7 @@ public class FakeCacheProvider implements CacheProvider {
 
 	@Override
 	public CacheApi getCache() {
+		System.out.println("getting  fakeCache..");
 		return fakeCache;
 	}
 

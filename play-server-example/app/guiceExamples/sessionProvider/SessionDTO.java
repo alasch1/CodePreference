@@ -22,7 +22,6 @@ public class SessionDTO {
 	public void start() {
 		uuid = java.util.UUID.randomUUID().toString();
 		updateTimestamp();
-//		LOG.info("Started {}", this);
 	}
 	
 	/**
@@ -30,7 +29,6 @@ public class SessionDTO {
 	 */
 	public void touch() {
 		updateTimestamp();
-//		LOG.info("Touched {}", this);
 	}
 	
 	/**
@@ -38,7 +36,6 @@ public class SessionDTO {
 	 */
 	public void reset() {
 		init();
-//		LOG.info("Ended {}", this);
 	}
 	
 	public boolean isStarted() {
