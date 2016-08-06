@@ -3,33 +3,26 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-GET /startSession            controllers.HomeController.startSession
-GET /restoreSession            controllers.HomeController.restoreSession
-GET /cache  controllers.HomeController.getCacheData
-
-# An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
-
-GET /string2file	controllers.HomeController.getCsvFile1
-GET /csvfile			controllers.HomeController.getCsvFile2
-#Generated stuff
-# An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
+GET /                     controllers.HomeController.index
+GET /startSession         controllers.HomeController.startSession
+GET /restoreSession       controllers.HomeController.restoreSession
+GET /cache                controllers.HomeController.getCacheData
+GET /string2file	      controllers.HomeController.getCsvFile1
+GET /csvfile			  controllers.HomeController.getCsvFile2
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)
 
 # Map static html file example
-GET /example1						controllers.Assets.at(path="/public/html", file="staticHtmlFileExample.html")
+GET /example1				controllers.Assets.at(path="/public/html", file="staticHtmlFileExample.html")
 
 # exact route example
 GET /thisIsMyPage		controllers.HomeController.exactRoute(myMessage)
 
 # case-insensitive route example
-GET /$dummy<(?i)thisIsMyPage>		controllers.HomeController.insensitiveRoute(dummy)
+GET /$dummy<(?i)thisIsMyPage>	controllers.HomeController.insensitiveRoute(dummy)
 
 # abgularjs client example
-GET /angularjs								controllers.Assets.at(path="/public", file ="index.html")
-GET /*file							controllers.Assets.at(path="/public", file)
+GET /angularjs			controllers.Assets.at(path="/public", file ="index.html")
+GET /*file				controllers.Assets.at(path="/public", file)
 

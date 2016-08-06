@@ -28,7 +28,7 @@ public class TestInCacheSessionProvider extends FakeApplicationTestBase {
 		SessionDTO sessionId = sessionProvider.startSession(FAKE_USER, FAKE_PASSWORD);
 		assertNotNull(sessionId);
 		sessionId.setData(FAKE_DATA);
-		String sessionEncrypt = sessionProvider.encryptSession(sessionId);
+		String sessionEncrypt = sessionProvider.prepareCookie(sessionId);
 		assertFalse(sessionEncrypt.isEmpty());
 		SessionDTO restoredSessionId = sessionProvider.restoreSession(sessionEncrypt);
 		assertNotNull(restoredSessionId);

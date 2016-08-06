@@ -15,6 +15,7 @@ public class SessionDTO {
 	private String uuid=EMPTY;
 	private String data=EMPTY;
 	private String recentTimestamp=EMPTY;
+	public static int SESSION_TIMEOUT_IN_MIN = 60;
 	
 	public SessionDTO() {
 	}

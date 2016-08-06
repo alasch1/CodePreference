@@ -1,18 +1,11 @@
 import guiceExamples.cache.CacheProvider;
 import guiceExamples.cache.RuntimeCacheProvider;
-
-import java.time.Clock;
-
 import play.Configuration;
 import play.Environment;
-import services.ApplicationTimer;
-import services.AtomicCounter;
-import services.Counter;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.ImplementedBy;
 
-import customization.JsonStartupHandler;
+import customization.StartupHandler;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -27,24 +20,18 @@ import customization.JsonStartupHandler;
 public class Module extends AbstractModule {
 
 	private final Environment env;
+	private final Configuration configuration;
    
 	public Module(Environment env, Configuration configuration) {
 		this.env = env;
+		this.configuration = configuration;
 	}
 	
     @Override
     public void configure() {
-        // Use the system clock as the default implementation of Clock
-        bind(Clock.class).toInstance(Clock.systemDefaultZone());
-        // Ask Guice to create an instance of ApplicationTimer when the
-        // application starts.
-        bind(ApplicationTimer.class).asEagerSingleton();
-        // Set AtomicCounter as the implementation for Counter.
-        bind(Counter.class).to(AtomicCounter.class);
-        // My code
         // The call is commented, since SessionProvider is injected with @ImplementedBy annotation
         //bind(SessionProvider.class).to(SessionInCashProvider.class); 
-		bind(JsonStartupHandler.class).asEagerSingleton();
+		bind(StartupHandler.class).asEagerSingleton();
  
 		// Injection for test is done with GuiceApplicationBuilder
 		if (!env.isTest() ) {
