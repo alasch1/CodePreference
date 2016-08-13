@@ -1,2 +1,2 @@
 # CodePreference
-Examples for code preference blog
+Examples for code preference blog www.codepreference.com
