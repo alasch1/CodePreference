@@ -11,13 +11,15 @@ import javax.inject.Inject;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
-import play.api.Play;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.Application;
 import views.html.examplepage;
 import views.html.index;
+import views.html.injectappexample;
 
 import com.alasch1.logging.impl.LoggerFactory;
+import com.google.inject.Provider;
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -25,14 +27,15 @@ import com.alasch1.logging.impl.LoggerFactory;
 public class HomeController extends Controller {
 
 	static private final String CSV_FILE = "demo.csv";
-	static private final String DEMO_SESSION = "demo-session";
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 	
-	@Inject
-	private SessionInCacheProvider sessionProvider;
+	Provider<Application> applicationProvider;
 	
 	@Inject 
-	private CacheProvider cacheProvider;
+	public HomeController(
+			Provider<Application> applicationProvider) {
+		this.applicationProvider = applicationProvider;
+	}
 	
     /**
      * An action that renders an HTML page with a welcome message.
@@ -42,53 +45,6 @@ public class HomeController extends Controller {
      */
     public Result index() {
         return ok(index.render("Your new application is ready."));
-    }
-    
-    public Result startSession() {
-    	SessionDTO sessionDto = sessionProvider.startSession("one","two");
-    	String encryptedSession = sessionProvider.prepareCookie(sessionDto);
-    	LOG.info("Cookie value: {}", encryptedSession);
-    	ctx().session().put(DEMO_SESSION, encryptedSession);
-    	LOG.info("Started {}", sessionDto);
-    	return ok("Session was started:" + sessionDto.toString());
-    }
-    
-    public Result restoreSession() {
-    	String encryptedSession = ctx().session().get(DEMO_SESSION);
-    	SessionDTO restoredSession = sessionProvider.restoreSession(encryptedSession);
-    	LOG.info("Restored session {}", restoredSession);
-    	return ok("Session was restored: " + restoredSession.toString());
-    }
-    
-	/**
-	 * Gets data for the current session from cache. Serves for maintenance. 
-	 * 
-	 * @return
-	 */
-    public Result getCacheData() {
-//    	Object cacheData = cacheProvider.getCache().get("DEMO-KEY");
-//    	return ok(String.format("Cache content : %s", cacheData));		
-		LOG.info("Getting from cache the current browser session data");
-		String sessionCookie = ctx().session().get(DEMO_SESSION);
-		if (Strings.isNotBlank(sessionCookie)) {
-			SessionDTO session = sessionProvider.restoreSession(sessionCookie);
-			Object cacheData = cacheProvider.getCache().get(session.getUuid());
-//			return ok(String.format("Cache content at %s: [%s]: %s", SspStringUtils.localTimeISO(false), session.getBrowserUuid(), cacheData));		
-			return ok(String.format("Cache content: [%s]: %s", session.getUuid(), cacheData));		
-		}
-		else {
-			return ok("No active section, cache is empty");
-		}
-    }
-
-    public Result exactRoute(String message) {
-        return ok(examplepage.render("This is the exact route:" + message));
-    }
-
-    public Result insensitiveRoute(String dummy) {
-    	// Extract query parameter case-insensitive
-    	String message = InputRequestHelper.getInputQueryParameter("mymessage", request(), true);
-        return ok(examplepage.render("This is insensitive route:" + message));
     }
     
     public Result getCsvFile1() {
@@ -101,7 +57,7 @@ public class HomeController extends Controller {
     public Result getCsvFile2() {
 		response().setHeader(CONTENT_DISPOSITION, 
 				String.format("attachment; filename=\"%s\"", CSV_FILE));
-		return ok(Play.current().getFile(CSV_FILE)).as("text/csv");
+		return ok(applicationProvider.get().getFile(CSV_FILE)).as("text/csv");
     }
     
 }
