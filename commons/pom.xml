@@ -11,7 +11,7 @@
 	<groupId>com.alasch1.codepreference.commons</groupId>
 	<artifactId>codepref-commons</artifactId>	
 	<name>commons</name>
-	<description>common utils and classes</description>
+	<description>common utilities and classes</description>
 	<packaging>jar</packaging>
 
 	<dependencies>

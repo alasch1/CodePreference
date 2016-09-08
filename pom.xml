@@ -12,6 +12,7 @@
 	<modules>
 		<module>commons</module>
 		<module>log4j2examples</module>
+		<module>mocking-examples</module>
 	</modules>
 
 	<properties>
