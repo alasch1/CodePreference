@@ -4,11 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
+import com.alasch1.testutils.ConfigUtil;
+
 public class SimpleThreadContextExample {
 	private static Logger LOG;
 	
 	public static void main(String[] args) {
-		System.setProperty("log4j.configurationFile", "example1-log4j2.xml");
+		ConfigUtil.setLog4jConfig("example1-log4j2.xml");
 		// Logger initialization should be done after setting the log4j2 configuration
 		LOG = LogManager.getLogger();
 		threadContextMapExample();

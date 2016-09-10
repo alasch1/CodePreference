@@ -16,7 +16,6 @@ import com.alasch1.logging.impl.LogConfiguration;
 import com.alasch1.logging.impl.LogContextHandler;
 import com.alasch1.logging.mocks.AppConfigurationMock;
 import com.alasch1.logging.mocks.ErrorsPatterns4Tests;
-import com.alasch1.logging.plugins.TestErrorPatternFilter.InvalidErrorsPatterns;
 import com.alasch1.testutils.StringAppender4Tests;
 import com.alasch1.testutils.VerbalTestExecutor;
 
