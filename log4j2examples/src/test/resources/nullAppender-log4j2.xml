@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.alasch1.logging.plugins">
+
+	<Appenders>
+		<NullAppender name="null">
+		</NullAppender>
+		
+		<Console name="console">
+			<PatternLayout>
+				<pattern>
+					%d %level{length=2} (%c{1.}.%M:%L) - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<root level="info">
+<!-- 			<appenderRef ref="console" /> -->
+<!-- 			<appenderRef ref="null" /> -->
+		</root>
+
+		<logger name="com.alasch1.logging.examples" level="debug" additivity="false">
+<!-- 			<appenderRef ref="console" /> -->
+			<appenderRef ref="null" />
+		</logger>
+
+ 	</Loggers>
+	
+</Configuration>
