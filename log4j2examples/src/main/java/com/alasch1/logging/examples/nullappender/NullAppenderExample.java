@@ -1,8 +1,9 @@
-package com.alasch1.logging.examples;
+package com.alasch1.logging.examples.nullappender;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.alasch1.logging.examples.loggingOffPackage.Class4LoggingOff;
 import com.alasch1.logging.examples.nullAppenderPackage.Class4NullLogging;
 import com.alasch1.testutils.ConfigUtil;
 
@@ -20,6 +21,7 @@ public class NullAppenderExample {
 		final String message = "the demo message";
 		LOG.info("From the main {}", message);
 		Class4NullLogging.logMessage(message);
+		Class4LoggingOff.logMessage(message);
 	}
 
 }

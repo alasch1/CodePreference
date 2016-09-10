@@ -21,7 +21,9 @@
 
 		<logger name="com.alasch1.logging.examples.nullAppenderPackage" additivity="false">
 			<appenderRef ref="null" />
-<!-- 			<appenderRef ref="console" /> -->
+		</logger>
+		
+		<logger name="com.alasch1.logging.examples.loggingOffPackage" level="off">
 		</logger>
  	</Loggers>
 	
