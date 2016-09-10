@@ -19,7 +19,7 @@
 			<appenderRef ref="console" />
 		</root>
 
-		<logger name="com.alasch1.logging.examples.nullAppenderPackage" level="debug" additivity="false">
+		<logger name="com.alasch1.logging.examples.nullAppenderPackage" additivity="false">
 			<appenderRef ref="null" />
 <!-- 			<appenderRef ref="console" /> -->
 		</logger>
