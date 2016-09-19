@@ -55,8 +55,11 @@ GET /fixedPageNoteParamExample/:page		controllers.RoutesExamplesController.getPa
 GET /pageExample5/:page/$pageNum<[^/d*]>	controllers.RoutesExamplesController.getPageLine(page:Int,pageNum:Int)
 
 # Redirect route examples
+# Redirect to another controller
+GET /redirect2home				controllers.RoutesExamplesController.redirectToHomeController
+# Redirect to static html
 GET /redirect2example1			controllers.RoutesExamplesController.redirectToExample1
-GET /redirect2index				controllers.RoutesExamplesController.redirectToIndex
+GET /redirect2indexHtml				controllers.RoutesExamplesController.redirectToIndexHtml
 GET /redirect2staticHtml		controllers.RoutesExamplesController.redirectToStaticHtml
 
 # exact route example

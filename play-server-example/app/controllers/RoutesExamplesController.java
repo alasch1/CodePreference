@@ -36,7 +36,14 @@ public class RoutesExamplesController extends Controller {
     	return redirect(REDIRECT_TO_URL);
     }
     
-    public Result redirectToIndex() {
+    public Result redirectToHomeController() {
+     	LOG.info("Redirecting to home.index()");
+    	return redirect(controllers.routes.HomeController.index());
+    	// This way also is working
+    	//return redirect(routes.HomeController.index());
+    }
+    
+    public Result redirectToIndexHtml() {
     	final String REDIRECT_TO_URL = "/index.html";
     	LOG.info("Redirecting to {}", REDIRECT_TO_URL);
     	return redirect(REDIRECT_TO_URL);
