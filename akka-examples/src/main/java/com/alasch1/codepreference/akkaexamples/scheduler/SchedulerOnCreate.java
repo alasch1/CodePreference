@@ -17,23 +17,17 @@ public class SchedulerOnCreate extends AbstractLoggingActor {
 	// Protocol
 	private static final String TICK = "tick";
 	
+	private static final String ACTOR_SYSTEM = "MySystem";
+	private static final String ACTOR = "scheduler";
+	
 	public static Props props() {
-		return Props.create(SchedulerOnCreate.class);
+		return Props.create(SchedulerOnCreate.class, () -> new SchedulerOnCreate());
 	}
 	
-	// Schedule the first tick from now to 
-	private final Cancellable tick = getContext().system().scheduler().schedule(
-			Duration.Zero(),
-			Duration.create(100, TimeUnit.MILLISECONDS), 
-			self(), 
-			TICK,
-			getContext().dispatcher(), 
-			null);
-
 	public SchedulerOnCreate() {
 		receive(ReceiveBuilder
 			.matchEquals(TICK, this::onTick)
-			.matchAny(m -> log().warning("Unknown message"))
+			.matchAny(m -> unhandled(m))
 			.build());
 	}
 	
@@ -41,17 +35,22 @@ public class SchedulerOnCreate extends AbstractLoggingActor {
 		log().info("ticking ...");
 	}
 
-	@Override
-	public void postStop() throws Exception {
-		tick.cancel();
-		log().info("Cancelled");
-	}
-	
     public static void main( String[] args ) {
     	
-    	ActorSystem system = ActorSystem.create("mySystem");
-    	ActorRef scheduler = system.actorOf(SchedulerOnCreate.props(), "scheduler");
+    	ActorSystem system = ActorSystem.create(ACTOR_SYSTEM);
+    	ActorRef scheduler = system.actorOf(SchedulerOnCreate.props(), ACTOR);
+    	
+    	// If a tick is a data member, interval is ignored
+    	Cancellable tick = system.scheduler().schedule(
+    			Duration.create(10, TimeUnit.SECONDS), 
+    			Duration.create(10, TimeUnit.SECONDS),
+    			scheduler, 
+    			TICK,
+    			system.dispatcher(), 
+    			null);
+
         AppUtil.terminate(system, scheduler);
+        tick.cancel();
         
     }
 }

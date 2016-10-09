@@ -16,30 +16,30 @@ public class SchedulerOnReceive extends AbstractLoggingActor {
 	// Protocol
 	private static final String TICK = "tick";
 	
-	public static Props props() {
-		return Props.create(SchedulerOnReceive.class);
+	private static final String ACTOR_SYSTEM = "MySystem";
+	private static final String ACTOR = "scheduler";
+	
+	private long initialDelayMillis = 0L;
+	private long intervalSecs = 0L;
+	
+	public static Props props(long initialDelayMillis, long intervalSecs) {
+		return Props.create(SchedulerOnReceive.class, () -> new SchedulerOnReceive(initialDelayMillis, intervalSecs));
 	}
 	
-	public SchedulerOnReceive() {
+	public SchedulerOnReceive(long initialDelayMillis, long intervalSecs) {
+		this.initialDelayMillis = initialDelayMillis;
+		this.intervalSecs = intervalSecs;
 		receive(ReceiveBuilder
 			.matchEquals(TICK, this::onTick)
-			.matchAny(o -> log().warning("Uknown message"))
+			.matchAny(m -> unhandled(m))
 			.build());
 	}
 	
-//	@Override
-//	public PartialFunction<Object, BoxedUnit> receive() {
-//		return (ReceiveBuilder
-//				.matchEquals(TICK, this::onTick)
-//				.matchAny(o -> log().warning("Uknown message"))
-//				.build());
-//	}
-
 	@Override
 	public void preStart() throws Exception {
 		log().info("Scheduling the first tick..");
 		getContext().system().scheduler().scheduleOnce(
-			Duration.create(100, TimeUnit.MILLISECONDS),
+			Duration.create(initialDelayMillis, TimeUnit.MILLISECONDS),
 			self(), 
 			TICK,
 			getContext().dispatcher(),
@@ -54,7 +54,7 @@ public class SchedulerOnReceive extends AbstractLoggingActor {
 	private void onTick(String tick) {
 		log().info("Scheduling next tick..");
 		getContext().system().scheduler().scheduleOnce(
-			Duration.create(1, TimeUnit.SECONDS),
+			Duration.create(intervalSecs, TimeUnit.SECONDS),
 			self(), 
 			TICK,
 			getContext().dispatcher(),
@@ -63,8 +63,8 @@ public class SchedulerOnReceive extends AbstractLoggingActor {
 	
     public static void main( String[] args ) {
     	
-    	ActorSystem system = ActorSystem.create("mySystem");
-    	ActorRef scheduler = system.actorOf(SchedulerOnReceive.props(), "schedulerByOne");
+    	ActorSystem system = ActorSystem.create(ACTOR_SYSTEM);
+    	ActorRef scheduler = system.actorOf(SchedulerOnReceive.props(500, 10), ACTOR);
         AppUtil.terminate(system, scheduler);
         
     }
