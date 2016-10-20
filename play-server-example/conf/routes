@@ -16,6 +16,8 @@ GET /injectAppExample	controllers.InjectionExamplesController.injectAppExample
 # Akka actors example controller
 GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
 
+# File upload example
+POST /uploadFile		controllers.HomeController.uploadFile
 ##############################################################
 # Default values examples
 ##############################################################

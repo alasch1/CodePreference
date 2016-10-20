@@ -1,25 +1,21 @@
 package controllers;
 
-import guiceExamples.cache.CacheProvider;
-import guiceExamples.sessionProvider.SessionDTO;
-import guiceExamples.sessionProvider.SessionInCacheProvider;
-
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 
 import javax.inject.Inject;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.util.Strings;
-
-import play.mvc.Controller;
-import play.mvc.Result;
-import play.Application;
-import views.html.examplepage;
-import views.html.index;
-import views.html.injectappexample;
 
 import com.alasch1.logging.impl.LoggerFactory;
 import com.google.inject.Provider;
+
+import play.Application;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -32,8 +28,7 @@ public class HomeController extends Controller {
 	Provider<Application> applicationProvider;
 	
 	@Inject 
-	public HomeController(
-			Provider<Application> applicationProvider) {
+	public HomeController(Provider<Application> applicationProvider) {
 		this.applicationProvider = applicationProvider;
 	}
 	
@@ -58,6 +53,14 @@ public class HomeController extends Controller {
 		response().setHeader(CONTENT_DISPOSITION, 
 				String.format("attachment; filename=\"%s\"", CSV_FILE));
 		return ok(applicationProvider.get().getFile(CSV_FILE)).as("text/csv");
+    }
+    
+    public Result uploadFile() throws IOException {
+        File file = request().body().asRaw().asFile();
+        LOG.info("file name={}", file.getName());
+        String stringFromFile = FileUtils.readFileToString(file);
+        LOG.info("file content={}", stringFromFile);
+        return ok("File uploaded:" + stringFromFile);
     }
     
 }
