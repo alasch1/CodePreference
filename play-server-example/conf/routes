@@ -13,6 +13,9 @@ GET /restoreSession     controllers.InjectionExamplesController.restoreSession
 GET /cache              controllers.InjectionExamplesController.getCacheData
 GET /injectAppExample	controllers.InjectionExamplesController.injectAppExample
 
+# Akka actors example controller
+GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
+
 ##############################################################
 # Default values examples
 ##############################################################
