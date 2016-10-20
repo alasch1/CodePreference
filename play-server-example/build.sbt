@@ -5,7 +5,10 @@ name := """play-server-example"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+// LauncherJarPlugin serves to overcome long classpath problem
+lazy val root = (project in file(".")).enablePlugins(PlayJava, LauncherJarPlugin)
+
+//lazy val root = (project in file(".")).enablePlugins(PlayScala, LauncherJarPlugin)
 
 //scalaVersion := "2.11.8"
 scalaVersion := "2.11.7"
