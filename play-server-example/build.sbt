@@ -37,5 +37,6 @@ libraryDependencies ++= Seq(
  		"org.apache.logging.log4j" % "log4j-core" % log4jVersion,
         "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
  		"org.hibernate" % "hibernate-entitymanager" % hibernateVersion,
+ 		"commons-io" % "commons-io" % "2.4",
 		"com.alasch1.codepreference.log4j2examples" % "codepref-log4j2" % codepreferenceVersion
 )
