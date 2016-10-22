@@ -18,10 +18,14 @@ public abstract class FakeApplicationTestBase extends WithApplication {
 	@Override
 	protected Application provideApplication() {
 		System.out.println("FakeApplicationTestBase.provideApplication ...");
+		return configureGuice();
+	}
+	
+	protected Application configureGuice() {
 		return new GuiceApplicationBuilder()
-			.overrides(bind(CacheProvider.class).to(FakeCacheProvider.class))
-			.in(Mode.TEST)
-			.build();
+				.overrides(bind(CacheProvider.class).to(FakeCacheProvider.class))
+				.in(Mode.TEST)
+				.build();		
 	}
 	
 	protected Injector getInjector() {
