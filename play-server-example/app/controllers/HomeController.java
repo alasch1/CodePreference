@@ -14,6 +14,8 @@ import com.google.inject.Provider;
 
 import play.Application;
 import play.mvc.Controller;
+import play.mvc.Http.MultipartFormData;
+import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import views.html.index;
 /**
@@ -56,11 +58,28 @@ public class HomeController extends Controller {
     }
     
     public Result uploadFile() throws IOException {
-        File file = request().body().asRaw().asFile();
-        LOG.info("file name={}", file.getName());
-        String stringFromFile = FileUtils.readFileToString(file);
-        LOG.info("file content={}", stringFromFile);
-        return ok("File uploaded:" + stringFromFile);
+        MultipartFormData<File> body = request().body().asMultipartFormData();
+        FilePart<File> filePart = body.getFile("data");
+        if (filePart != null) {
+            LOG.info("filePart={}", filePart);
+            String fileName = filePart.getFilename();
+            String contentType = filePart.getContentType();
+            File file = filePart.getFile();
+            LOG.info("fileName={}, contentType={}, file={}", fileName,contentType, file);
+            String stringFromFile = FileUtils.readFileToString(file);
+            LOG.info("stringFromFile.length={}", stringFromFile.length());
+            return ok("File uploaded to String (length=" + stringFromFile.length()+")");
+        } 
+        else {
+            flash("error", "Missing file");
+            return badRequest();
+        }
+    	
+    }
+    public Result uploadFileAsText() {
+    	String text =  request().body().asText();
+        LOG.info("body.asText={}", text);
+        return ok("File uploaded:" + text);
     }
     
 }

@@ -31,12 +31,13 @@ val lombokVersion = "1.16.6"
 val log4jVersion = "2.4.1"
 val codepreferenceVersion = "1.0.0-SNAPSHOT"
 val hibernateVersion = "4.3.10.Final"
+val commonsIOVersion = "2.4"
 
 libraryDependencies ++= Seq(
 		"org.projectlombok" % "lombok" % lombokVersion,
  		"org.apache.logging.log4j" % "log4j-core" % log4jVersion,
         "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
  		"org.hibernate" % "hibernate-entitymanager" % hibernateVersion,
- 		"commons-io" % "commons-io" % "2.4",
+ 		"commons-io" % "commons-io" % commonsIOVersion,
 		"com.alasch1.codepreference.log4j2examples" % "codepref-log4j2" % codepreferenceVersion
 )

@@ -18,6 +18,7 @@ GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
 
 # File upload example
 POST /uploadFile		controllers.HomeController.uploadFile
+POST /uploadFileAsText		controllers.HomeController.uploadFileAsText
 ##############################################################
 # Default values examples
 ##############################################################
