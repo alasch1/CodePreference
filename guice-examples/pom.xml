@@ -3,32 +3,32 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<parent>
 		<groupId>com.alasch1.codepreference</groupId>
 		<artifactId>codepreference</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-
-	<groupId>com.alasch1.codepreference.akka.examples</groupId>
-	<artifactId>akka-examples</artifactId>
-	<name>akka-examples</name>
-	<packaging>jar</packaging>
-
-	<properties>
-		<akka.version>2.4.11</akka.version>
-	</properties>
 	
+	<groupId>com.alasch1.codepreference.guice.examples</groupId>
+	<artifactId>guice-examples</artifactId>
+	<name>guice-examples</name>
+	<packaging>jar</packaging>
+	
+	<properties>
+		<guice.version>3.0</guice.version>
+	</properties>
+
 	<dependencies>
 
-		<!-- Akka -->
+		<!-- Guice -->
 		<dependency>
-			<groupId>com.typesafe.akka</groupId>
-			<artifactId>akka-actor_2.11</artifactId>
-			<version>${akka.version}</version>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
