@@ -4,11 +4,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 public class FixedServiceProxy implements ServiceProxy {
-
+	
 	private NamedServiceProvider service;
 	
 	@Inject 
-	public FixedServiceProxy(@Named("serviceA")NamedServiceProvider service) {
+	public FixedServiceProxy(@Named(AppNames.SERVICE_A)NamedServiceProvider service) {
 		this.service = service;
 	}
 

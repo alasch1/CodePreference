@@ -1,5 +1,6 @@
 package com.alasch1.codepreference.guice.examples;
 
+import com.alasch1.codepreference.guice.examples.assisited.AppNames;
 import com.alasch1.codepreference.guice.examples.assisited.FixedServiceProxy;
 import com.alasch1.codepreference.guice.examples.assisited.FlexibleServiceProxy;
 import com.alasch1.codepreference.guice.examples.assisited.NamedServiceProvider;
@@ -20,11 +21,11 @@ public class AppModule extends AbstractModule {
 	protected void configure() {
 		bind(EagerSingletonBean.class).asEagerSingleton();
 		bind(ServiceProvider.class).to(ServiceBean.class);
-        bind(NamedServiceProvider.class).annotatedWith(Names.named("serviceA")).to(NamedServiceA.class);
-        bind(NamedServiceProvider.class).annotatedWith(Names.named("serviceB")).to(NamedServiceB.class);
+        bind(NamedServiceProvider.class).annotatedWith(Names.named(AppNames.SERVICE_A)).to(NamedServiceA.class);
+        bind(NamedServiceProvider.class).annotatedWith(Names.named(AppNames.SERVICE_B)).to(NamedServiceB.class);
 		install(new FactoryModuleBuilder()
-				.implement(ServiceProxy.class, Names.named("fixed"), FixedServiceProxy.class)
-				.implement(ServiceProxy.class, Names.named("flex"), FlexibleServiceProxy.class)
+				.implement(ServiceProxy.class, Names.named(AppNames.FIXED), FixedServiceProxy.class)
+				.implement(ServiceProxy.class, Names.named(AppNames.FLEX), FlexibleServiceProxy.class)
 				.build(ServiceProxyFactory.class));
 	}
 
