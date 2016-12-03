@@ -9,9 +9,10 @@ import com.alasch1.codepreference.guice.examples.basic.EagerSingletonBean;
 
 public class App {
     public static void main( String[] args ) {
+    	DIContainer.getInjector();
+    	EagerSingletonBean.just4Test("Hi !");
     	ServiceProvider service = DIContainer.getInjector().getInstance(ServiceProvider.class);
     	service.useMe();
-    	EagerSingletonBean.just4Test("Hi !");
         ConstructorInjectionClient client1 = DIContainer.getInjector().getInstance(ConstructorInjectionClient.class);
         client1.use();
         ConstructorInjectionClient client2 = DIContainer.getInjector().getInstance(ConstructorInjectionClient.class);
