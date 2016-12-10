@@ -23,9 +23,9 @@ public class App {
         
         ServiceProxyFactory factory = DIContainer.getInjector().getInstance(ServiceProxyFactory.class);
         ServiceProxy proxy1 = factory.createFlexibleProxy("serviceB");
-        System.out.println(proxy1.getService().getName());
+        System.out.println(proxy1.getNamedService().getName());
         ServiceProxy proxy2 = factory.createFixedProxy();
-        System.out.println(proxy2.getService().getName());
+        System.out.println(proxy2.getNamedService().getName());
         
     }
 }

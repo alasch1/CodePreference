@@ -13,7 +13,7 @@ public class FixedServiceProxy implements ServiceProxy {
 	}
 
 	@Override
-	public NamedServiceProvider getService() {
+	public NamedServiceProvider getNamedService() {
 		return service;
 	}
 }
