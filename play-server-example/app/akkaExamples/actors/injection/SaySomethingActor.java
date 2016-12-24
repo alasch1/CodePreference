@@ -3,6 +3,7 @@ package akkaExamples.actors.injection;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
+import akka.actor.Actor;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import play.Configuration;
@@ -20,9 +21,14 @@ public class SaySomethingActor extends UntypedActor {
 		}
 	}
 
-	// Factory method for explicit creation
-	public static Props props(String something, Configuration configuration) {
-		return Props.create(SaySomethingActor.class, something, configuration);
+	// The factory method for injection
+	public interface Factory {
+		Actor create(String something);
+	}
+	
+	// The factory method for explicit creation
+	public static Props props(Configuration configuration, String something) {
+		return Props.create(SaySomethingActor.class, configuration, something);
 	}
 	
 	private static final String SIGNATURE_PROPERTY = "signature";
@@ -30,7 +36,7 @@ public class SaySomethingActor extends UntypedActor {
 	private final Configuration configuration;
 	
 	@Inject
-	public SaySomethingActor(@Assisted String something, Configuration configuration) {
+	public SaySomethingActor(Configuration configuration, @Assisted String something) {
 		this.something = something;
 		this.configuration = configuration;
 	}
@@ -41,10 +47,6 @@ public class SaySomethingActor extends UntypedActor {
 		sender().tell(helloString, self());
 	}
 	
-	public interface Factory {
-		SaySomethingActor create(String something);
-	}
-
 	@Override
 	public void onReceive(Object msg) throws Exception {
 		if (msg instanceof Someone) {
