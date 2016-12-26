@@ -13,4 +13,7 @@ public final class DIContainer {
 	public static Injector getInjector() {
 		return injector;
 	}
+	
+	private DIContainer() {
+	}
 }
