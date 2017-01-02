@@ -5,9 +5,6 @@ import static play.inject.Bindings.bind;
 
 import org.junit.Test;
 
-import guiceExamples.assisted.DynamicInjectTask;
-import guiceExamples.assisted.DynamicTaskFactory;
-import guiceExamples.assisted.StaticInjectTask;
 import guiceExamples.cache.CacheProvider;
 import play.Application;
 import play.Mode;

@@ -15,6 +15,7 @@ GET /injectAppExample	controllers.InjectionExamplesController.injectAppExample
 
 # Akka actors example controller
 GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
+GET /saySomething/:name/:something    controllers.ActorExamplesController.saySomething(name, something)
 
 # File upload example
 POST /uploadFile		controllers.HomeController.uploadFile

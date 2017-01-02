@@ -1,5 +1,7 @@
 package akkaExamples.actors;
 
+import com.google.inject.Inject;
+
 import akka.actor.AbstractActor;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
@@ -23,6 +25,7 @@ public class HelloAnyone extends AbstractActor {
 		return Props.create(HelloAnyone.class);
 	}
 	
+	@Inject
 	public HelloAnyone() {
 		receive(ReceiveBuilder
 			.match(Anyone.class, this::sayHello)
