@@ -34,7 +34,7 @@ public class HelloAnyone extends AbstractActor {
 	}
 	
 	private void sayHello(Anyone anyone) {
-		String helloString = HELLO + anyone.getName();
+		String helloString = String.format("%s %s", HELLO,anyone.getName());
 		System.out.println(helloString);
 		sender().tell(helloString, self());
 	}

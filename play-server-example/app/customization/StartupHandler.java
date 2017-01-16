@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import akka.actor.ActorSystem;
-import akkaExamples.actors.HelloAnyone;
-import akkaExamples.actors.HelloScheduler;
+import akkaExamples.actors.HelloSchedularMonitor;
 import play.Configuration;
 import play.libs.Json;
 
@@ -25,10 +23,11 @@ public class StartupHandler {
 	private static final String LOG4J2_CONFIG_PROPERTY = "log4j.configurationFile";
 	
 	@Inject
-	public StartupHandler(final Configuration configuration, final ActorSystem system) {
+	public StartupHandler(final Configuration configuration, 
+			final HelloSchedularMonitor schedularMonitor) {
 		System.setProperty(LOG4J2_CONFIG_PROPERTY, configuration.getString(LOG4J2_CONFIG_PROPERTY));
 		configureJson();
-		startScheduledActor(system);
+		startSchedulerMonitor(schedularMonitor);
 	}
 	
 	private void configureJson() {
@@ -38,9 +37,8 @@ public class StartupHandler {
 		Json.setObjectMapper(mapper);
 	}
 	
-	private void startScheduledActor(ActorSystem system) {
-		system.actorOf(HelloScheduler.props(
-				system.actorOf(HelloAnyone.props()), "Nobody"));
+	private void startSchedulerMonitor(HelloSchedularMonitor schedularMonitor) {
+		schedularMonitor.startPolling();
 	}
 
 }
