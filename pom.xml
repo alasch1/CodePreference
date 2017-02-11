@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.alasch1.codepreference</groupId>
+	<groupId>com.alasch1</groupId>
 	<artifactId>codepreference</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
@@ -10,12 +10,13 @@
 	<description>sources for codepreference blog</description>
 
 	<modules>
-		<module>commons</module>
-		<module>log4j2examples</module>
-		<module>mocking-examples</module>
-		<module>akka-examples</module>
-		<module>guice-examples</module>
-		<module>notepad</module>
+		<module>cdprf-commons</module>
+		<module>cdprf-log4j2-examples</module>
+		<module>cdprf-mocking-examples</module>
+		<module>cdprf-akka-examples</module>
+		<module>cdprf-guice-examples</module>
+		<module>cdprf-notepad</module>
+		<module>cdprf-jackson-csv-examples</module>
 	</modules>
 
 	<properties>

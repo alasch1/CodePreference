@@ -29,7 +29,7 @@ mappings in Universal ++= directory("scripts")
 
 val lombokVersion = "1.16.6"
 val log4jVersion = "2.4.1"
-val codepreferenceVersion = "1.0.0-SNAPSHOT"
+val cdprfVersion = "1.0.0-SNAPSHOT"
 val hibernateVersion = "4.3.10.Final"
 val commonsIOVersion = "2.4"
 
@@ -39,5 +39,5 @@ libraryDependencies ++= Seq(
         "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
  		"org.hibernate" % "hibernate-entitymanager" % hibernateVersion,
  		"commons-io" % "commons-io" % commonsIOVersion,
-		"com.alasch1.codepreference.log4j2examples" % "codepref-log4j2" % codepreferenceVersion
+		"com.alasch1.codepreference.examples" % "cdprf-log4j2-examples" % cdprfVersion
 )
