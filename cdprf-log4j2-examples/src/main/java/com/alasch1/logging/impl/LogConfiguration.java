@@ -1,7 +1,7 @@
 package com.alasch1.logging.impl;
 
-import com.alasch1.configuration.api.AppConfiguration;
-import com.alasch1.configuration.api.AppPropertiesConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppPropertiesConfiguration;
 
 /**
  * Implements logging configuration

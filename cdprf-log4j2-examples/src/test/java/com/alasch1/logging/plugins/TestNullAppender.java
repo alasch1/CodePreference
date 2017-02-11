@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.alasch1.testutils.ConfigUtil;
+import com.alasch1.cdprf.commons.testutils.ConfigUtil;
 
 public class TestNullAppender {
 

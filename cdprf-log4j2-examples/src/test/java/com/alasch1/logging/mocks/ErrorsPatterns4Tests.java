@@ -1,6 +1,6 @@
 package com.alasch1.logging.mocks;
 
-import com.alasch1.logging.api.ErrorsPatterns;
+import com.alasch1.cdprf.logging.api.ErrorsPatterns;
 
 
 public class ErrorsPatterns4Tests implements ErrorsPatterns {

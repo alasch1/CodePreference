@@ -13,10 +13,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.alasch1.mocking.examples.argumentCapture.FooService;
-import com.alasch1.mocking.examples.argumentCapture.FooService.BarService;
-import com.alasch1.mocking.examples.argumentCapture.FooService.Foo;
-import com.alasch1.mocking.examples.argumentCapture.FooService.RedisService;
+import com.alasch1.cdprf.mocking.argumentCapture.FooService;
+import com.alasch1.cdprf.mocking.argumentCapture.FooService.BarService;
+import com.alasch1.cdprf.mocking.argumentCapture.FooService.Foo;
+import com.alasch1.cdprf.mocking.argumentCapture.FooService.RedisService;
 
 import junit.framework.Assert;
 

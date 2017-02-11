@@ -1,6 +1,6 @@
 package com.alasch1.logging.plugins;
 
-import com.alasch1.logging.api.ErrorsPatterns;
+import com.alasch1.cdprf.logging.api.ErrorsPatterns;
 
 
 /**

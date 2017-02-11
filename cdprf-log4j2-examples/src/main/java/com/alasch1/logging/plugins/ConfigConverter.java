@@ -5,7 +5,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.pattern.ConverterKeys;
 import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 
-import com.alasch1.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
 /**
  * Class implements format converter %config for PatternLayout
  * Interpolates the converter into configuration toString method

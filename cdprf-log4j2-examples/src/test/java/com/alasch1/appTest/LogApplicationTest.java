@@ -5,11 +5,11 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.alasch1.logging.api.LogContext;
+import com.alasch1.cdprf.commons.testutils.ConfigUtil;
+import com.alasch1.cdprf.logging.api.LogContext;
 import com.alasch1.logging.impl.LogConfiguration;
 import com.alasch1.logging.impl.LogContextHandler;
 import com.alasch1.logging.mocks.AppConfigurationMock;
-import com.alasch1.testutils.ConfigUtil;
 
 /**
  * Test logger manually :

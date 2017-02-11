@@ -2,7 +2,7 @@ package com.alasch1.logging.mocks;
 
 import org.apache.commons.configuration.Configuration;
 
-import com.alasch1.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
 import com.alasch1.logging.plugins.ConfigurationLookup;
 
 public class AppConfigurationMock implements AppConfiguration {

@@ -7,10 +7,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alasch1.configuration.api.AppPropertiesConfiguration;
-import com.alasch1.configuration.api.ConfigurationError;
-import com.alasch1.testutils.ConfigUtil;
-import com.alasch1.testutils.VerbalTestExecutor;
+import com.alasch1.cdprf.commons.configuration.api.AppPropertiesConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.ConfigurationError;
+import com.alasch1.cdprf.commons.testutils.ConfigUtil;
+import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
 
 public class TestDummyConfiguration {
 	

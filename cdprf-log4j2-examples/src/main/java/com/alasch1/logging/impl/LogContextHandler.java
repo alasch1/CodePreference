@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
-import com.alasch1.logging.api.LogContext;
+import com.alasch1.cdprf.logging.api.LogContext;
 import com.alasch1.logging.plugins.ConfigurationLookup;
 
 /**

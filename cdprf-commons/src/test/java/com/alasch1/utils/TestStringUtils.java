@@ -9,7 +9,8 @@ import java.net.URLDecoder;
 
 import org.junit.Test;
 
-import com.alasch1.testutils.VerbalTestExecutor;
+import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
+import com.alasch1.cdprf.commons.utils.StringUtils;
 
 public class TestStringUtils {
 

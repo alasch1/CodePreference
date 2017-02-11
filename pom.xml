@@ -16,7 +16,7 @@
 		<module>cdprf-akka-examples</module>
 		<module>cdprf-guice-examples</module>
 		<module>cdprf-notepad</module>
-		<module>cdprf-jackson-csv-examples</module>
+		<module>cdprf-json-jackson</module>
 	</modules>
 
 	<properties>

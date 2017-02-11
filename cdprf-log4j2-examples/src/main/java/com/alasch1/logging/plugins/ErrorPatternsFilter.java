@@ -17,7 +17,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 import org.apache.logging.log4j.message.Message;
 
-import com.alasch1.logging.api.ErrorsPatterns;
+import com.alasch1.cdprf.logging.api.ErrorsPatterns;
 
 /**
  * This filter checks if a messages matches to any of ErrorPattern values. 

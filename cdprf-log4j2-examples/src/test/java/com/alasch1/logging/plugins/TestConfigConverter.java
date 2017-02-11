@@ -1,16 +1,15 @@
 package com.alasch1.logging.plugins;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
-import com.alasch1.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.testutils.StringAppender4Tests;
+import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
 import com.alasch1.logging.mocks.AppConfigurationMock;
-import com.alasch1.testutils.StringAppender4Tests;
-import com.alasch1.testutils.VerbalTestExecutor;
 
 
 public class TestConfigConverter {

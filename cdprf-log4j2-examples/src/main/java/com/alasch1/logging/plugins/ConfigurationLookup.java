@@ -4,7 +4,7 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.lookup.StrLookup;
 
-import com.alasch1.configuration.api.AppConfiguration;
+import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
 
 /**
  * Implements format lookup ${config} for PatternLayout
