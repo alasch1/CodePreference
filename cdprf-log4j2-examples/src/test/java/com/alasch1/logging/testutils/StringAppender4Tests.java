@@ -25,7 +25,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	
 	static private LoggerContext context = (LoggerContext) LogManager.getContext(false);
 	static private Configuration configuration = context.getConfiguration();
-	StringOutput4TestsStreamManager outstreamMgr;	
+	
+	private StringOutput4TestsStreamManager outstreamMgr;	
 	
 	/**
 	 * Creates an appender instance with the factory method and starts is, so each log
@@ -36,29 +37,12 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullableHeaderString
 	 * @return
 	 */
-	public static StringAppender4Tests startAppender(Logger logger, String nullablePatternString, String nullableHeaderString) {
-		StringAppender4Tests appender = createStringAppender(nullablePatternString, nullableHeaderString, null);
-		appender.addToLogger(logger, Level.INFO);
-		appender.start();
-		return appender;
-	}
-	
-	/**
-	 * Creates an appender instance with the factory method and starts is, so each log
-	 * event will be appended to it
-	 * 
-	 * @param logger
-	 * @param nullablePatternString
-	 * @param nullableHeaderString
-	 * @param filter
-	 * @return
-	 */
-	public static StringAppender4Tests startAppenderWithFilter(
+	public static StringAppender4Tests startAppender(
 			Logger logger, 
 			String nullablePatternString, 
-			String nullableHeaderString, 
-			Filter filter) {
-		StringAppender4Tests appender = createStringAppender(nullablePatternString, nullableHeaderString, filter);
+			String nullableHeaderString,
+			Filter nullableFilter) {
+		StringAppender4Tests appender = createStringAppender(nullablePatternString, nullableHeaderString, nullableFilter);
 		appender.addToLogger(logger, Level.INFO);
 		appender.start();
 		return appender;
@@ -75,7 +59,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	}
 	
 	/**
-	 * Executes logging implemented in AppendProcedure
+	 * Executes logging implemented by AppendProcedure
 	 * Starts/stops appender under the veil
 	 * 
 	 * @param procedure
@@ -84,35 +68,33 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullableHeaderString
 	 */
 	public static void append(AppendProcedure procedure, Logger logger, String nullablePatternString, String nullableHeaderString) {
-		StringAppender4Tests appender = startAppender(logger, nullablePatternString, nullableHeaderString);
+		StringAppender4Tests appender = startAppender(logger, nullablePatternString, nullableHeaderString, null);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
 	}
 	
 	/**
-	 * Executes logging implemented in AppendProcedure
+	 * Executes logging implemented by AppendProcedure, using the provided filter
 	 * Starts/stops appender under the veil
 	 * 
 	 * @param procedure
 	 * @param logger
 	 * @param nullablePatternString
-	 * @param nullableHeaderString
+	 * @param filter
 	 */
-	public static void appendByFilter(AppendProcedure procedure, Logger logger, String nullablePatternString, Filter filter) {
-		StringAppender4Tests appender = startAppenderWithFilter(logger, nullablePatternString, null, filter);
+	public static void appendWithFilter(AppendProcedure procedure, Logger logger, String nullablePatternString, Filter filter) {
+		StringAppender4Tests appender = startAppender(logger, nullablePatternString, null, filter);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
 	}
 	
-	private StringAppender4Tests(
-			String name,
-			Layout<? extends Serializable> layout, 
-			Filter filter,
-			StringOutput4TestsStreamManager outstreamMgr,
-			boolean ignoreExceptions, 
-			boolean immediateFlush) {
-		super(name, layout, filter, ignoreExceptions, immediateFlush, outstreamMgr);
-		this.outstreamMgr = outstreamMgr;
+	/**
+	 * Returns output appended so far 
+	 * @return
+	 */
+	public String getOutput() {
+		outstreamMgr.flush();
+		return new String(outstreamMgr.getStream().toByteArray());
 	}
 	
 	/**
@@ -150,19 +132,21 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 				true); //immediateFlush
 	}
 	
+	private StringAppender4Tests(
+			String name,
+			Layout<? extends Serializable> layout, 
+			Filter filter,
+			StringOutput4TestsStreamManager outstreamMgr,
+			boolean ignoreExceptions, 
+			boolean immediateFlush) {
+		super(name, layout, filter, ignoreExceptions, immediateFlush, outstreamMgr);
+		this.outstreamMgr = outstreamMgr;
+	}
+	
 	private void addToLogger(Logger logger, Level level) {
 		LoggerConfig loggerConfig = configuration.getLoggerConfig(logger.getName());
 		loggerConfig.addAppender(this, level, null);
 		context.updateLoggers();
-	}
-	
-	/**
-	 * Returns output appended so far 
-	 * @return
-	 */
-	public String getOutput() {
-		outstreamMgr.flush();
-		return new String(outstreamMgr.getStream().toByteArray());
 	}
 	
 	/**

@@ -52,7 +52,7 @@ public class TestErrorPatternFilter {
 			ErrorPatternsFilter filter = ErrorPatternsFilter.createFilter(ERROR_PATTERNS_CLASS, true);
 			final Logger logger = LogManager.getRootLogger();
 
-			StringAppender4Tests.appendByFilter((appender) ->{
+			StringAppender4Tests.appendWithFilter((appender) ->{
 				String errorMsg = "Error msg for logging test";
 				logger.info(errorMsg);
 				System.out.println("Appender buffer 1:" + appender.getOutput());
@@ -71,7 +71,7 @@ public class TestErrorPatternFilter {
 			ErrorPatternsFilter filter = ErrorPatternsFilter.createFilter(ERROR_PATTERNS_CLASS, false);
 			final Logger logger = LogManager.getRootLogger();
 
-			StringAppender4Tests.appendByFilter((appender) ->{
+			StringAppender4Tests.appendWithFilter((appender) ->{
 				String errorMsg = "Error msg for logging test";
 				logger.info(errorMsg);
 				System.out.println("Appender buffer 1:" + appender.getOutput());
