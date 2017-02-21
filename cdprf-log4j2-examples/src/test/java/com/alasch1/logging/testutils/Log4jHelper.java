@@ -1,4 +1,4 @@
-package com.alasch1.cdprf.commons.testutils;
+package com.alasch1.logging.testutils;
 
 /**
  * Class utility encapsulates shortcuts to log4j2 manipulations

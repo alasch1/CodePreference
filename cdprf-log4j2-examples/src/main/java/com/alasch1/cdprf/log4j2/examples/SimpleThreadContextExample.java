@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
-import com.alasch1.cdprf.commons.testutils.ConfigUtil;
+import com.alasch1.cdprf.commons.utils.ConfigUtil;
 
 public class SimpleThreadContextExample {
 	private static Logger LOG;

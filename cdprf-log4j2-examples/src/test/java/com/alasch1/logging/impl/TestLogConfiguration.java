@@ -6,8 +6,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alasch1.cdprf.commons.testutils.ConfigUtil;
 import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
+import com.alasch1.cdprf.commons.utils.ConfigUtil;
 
 public class TestLogConfiguration {
 	

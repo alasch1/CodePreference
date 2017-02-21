@@ -3,7 +3,7 @@ package com.alasch1.cdprf.log4j2.nullappender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.alasch1.cdprf.commons.testutils.ConfigUtil;
+import com.alasch1.cdprf.commons.utils.ConfigUtil;
 import com.alasch1.cdprf.log4j2.loggingOffPackage.Class4LoggingOff;
 import com.alasch1.cdprf.log4j2.nullAppenderPackage.Class4NullLogging;
 

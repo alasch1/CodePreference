@@ -1,16 +1,17 @@
 package com.alasch1.logging.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alasch1.cdprf.commons.testutils.Log4jHelper;
-import com.alasch1.cdprf.commons.testutils.StringAppender4Tests;
 import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
 import com.alasch1.logging.mocks.AppConfigurationMock;
+import com.alasch1.logging.testutils.Log4jHelper;
+import com.alasch1.logging.testutils.StringAppender4Tests;
 
 public class TestConfigLookup {
 

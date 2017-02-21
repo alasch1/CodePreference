@@ -7,9 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
-import com.alasch1.cdprf.commons.testutils.StringAppender4Tests;
 import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
 import com.alasch1.logging.mocks.AppConfigurationMock;
+import com.alasch1.logging.testutils.StringAppender4Tests;
 
 
 public class TestConfigConverter {

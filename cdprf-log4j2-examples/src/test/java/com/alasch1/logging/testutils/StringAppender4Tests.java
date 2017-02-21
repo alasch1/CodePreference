@@ -1,4 +1,4 @@
-package com.alasch1.cdprf.commons.testutils;
+package com.alasch1.logging.testutils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
