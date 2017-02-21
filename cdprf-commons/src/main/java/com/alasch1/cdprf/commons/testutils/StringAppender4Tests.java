@@ -21,7 +21,6 @@ import org.apache.logging.log4j.core.layout.PatternLayout;
  * @author aschneider
  *
  */
-@SuppressWarnings("serial")
 public class StringAppender4Tests extends AbstractOutputStreamAppender<StringAppender4Tests.StringOutput4TestsStreamManager> {
 	
 	static private LoggerContext context = (LoggerContext) LogManager.getContext(false);
@@ -38,7 +37,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @return
 	 */
 	public static StringAppender4Tests startAppender(Logger logger, String nullablePatternString, String nullableHeaderString) {
-		StringAppender4Tests appender = StringAppender4Tests.createStringAppender(nullablePatternString, nullableHeaderString, null);
+		StringAppender4Tests appender = createStringAppender(nullablePatternString, nullableHeaderString, null);
 		appender.addToLogger(logger, Level.INFO);
 		appender.start();
 		return appender;
@@ -59,7 +58,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 			String nullablePatternString, 
 			String nullableHeaderString, 
 			Filter filter) {
-		StringAppender4Tests appender = StringAppender4Tests.createStringAppender(nullablePatternString, nullableHeaderString, filter);
+		StringAppender4Tests appender = createStringAppender(nullablePatternString, nullableHeaderString, filter);
 		appender.addToLogger(logger, Level.INFO);
 		appender.start();
 		return appender;
@@ -72,6 +71,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	public void stopAppender(Logger logger) {
 		LoggerConfig loggerConfig = configuration.getLoggerConfig(logger.getName());
 		loggerConfig.removeAppender(StringAppender4Tests.class.getSimpleName());
+		context.updateLoggers();
 	}
 	
 	/**
@@ -84,7 +84,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullableHeaderString
 	 */
 	public static void append(AppendProcedure procedure, Logger logger, String nullablePatternString, String nullableHeaderString) {
-		StringAppender4Tests appender = StringAppender4Tests.startAppender(logger, nullablePatternString, nullableHeaderString);
+		StringAppender4Tests appender = startAppender(logger, nullablePatternString, nullableHeaderString);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
 	}
@@ -99,7 +99,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullableHeaderString
 	 */
 	public static void appendByFilter(AppendProcedure procedure, Logger logger, String nullablePatternString, Filter filter) {
-		StringAppender4Tests appender = StringAppender4Tests.startAppenderWithFilter(logger, nullablePatternString, null, filter);
+		StringAppender4Tests appender = startAppenderWithFilter(logger, nullablePatternString, null, filter);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
 	}
@@ -130,10 +130,13 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 			layout = PatternLayout.createDefaultLayout();
 		}
 		else {
-			layout = PatternLayout.createLayout(nullablePatternString, configuration, null, null, true, false, nullableHeaderString, null);
+			layout = PatternLayout.newBuilder()
+					.withPattern(nullablePatternString)
+					.withHeader(nullableHeaderString)
+					.build();
 		}
 		
-		StringOutput4TestsStreamManager streamManager =  new StringOutput4TestsStreamManager(
+		StringOutput4TestsStreamManager streamManager = new StringOutput4TestsStreamManager(
 				outputStream, 
 				StringOutput4TestsStreamManager.class.getSimpleName(), 
 				layout);
@@ -170,8 +173,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 		
 		ByteArrayOutputStream stream;
 
-		protected StringOutput4TestsStreamManager(ByteArrayOutputStream os, String streamName, Layout<?> layout) {
-			super(os, streamName, layout);
+		protected StringOutput4TestsStreamManager(final ByteArrayOutputStream os, final String streamName, Layout<?> layout) {
+			super(os, streamName, layout, true);
 			stream = os;
 		}
 		

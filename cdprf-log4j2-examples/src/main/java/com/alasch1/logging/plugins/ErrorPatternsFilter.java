@@ -32,8 +32,6 @@ import com.alasch1.cdprf.logging.api.ErrorsPatterns;
 @Plugin(name = "ErrorPatternsFilter", category = Node.CATEGORY, elementType = Filter.ELEMENT_TYPE, printObject = true)
 public class ErrorPatternsFilter extends AbstractFilter {
 
-	private static final long serialVersionUID = 1L;
-	
 	private Set<String> matchingValues;
 	
     private ErrorPatternsFilter(final Set<String> values, final boolean dropOnMatch) {
@@ -44,7 +42,7 @@ public class ErrorPatternsFilter extends AbstractFilter {
     
     @Override
 	public Result filter(LogEvent event) {
-    	final String text = event.getMessage().getFormat();
+    	final String text = event.getMessage().getFormattedMessage();
 		return filter(text);
 	}
 
@@ -53,7 +51,7 @@ public class ErrorPatternsFilter extends AbstractFilter {
         if (msg == null) {
             return onMismatch;
         }
-        return filter(msg.getFormat());
+        return filter(msg.getFormattedMessage());
 	}
 
 	@Override
