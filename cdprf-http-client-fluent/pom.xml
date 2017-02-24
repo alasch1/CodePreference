@@ -15,7 +15,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cdprf.commons.version>1.0.0-SNAPSHOT</cdprf.commons.version>
 		<apache.httpcomponents.version>4.5.1</apache.httpcomponents.version>
+		<jackson.version>2.5.4</jackson.version>
+		<lombok.version>1.16.6</lombok.version>
 	</properties>
 
 	<dependencies>
@@ -27,8 +30,60 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.alasch1.codepreference</groupId>
+			<artifactId>cdprf-commons</artifactId>
+			<version>${cdprf.commons.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		
+		<!--  Logging -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+
+		<!--  Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		
+		<!-- Unit tests -->
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

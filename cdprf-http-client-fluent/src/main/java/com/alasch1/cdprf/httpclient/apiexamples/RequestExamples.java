@@ -1,4 +1,4 @@
-package com.alasch1.cdprf.httpclient;
+package com.alasch1.cdprf.httpclient.apiexamples;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -27,6 +27,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.logging.log4j.util.Strings;
 
 public class RequestExamples {
 
@@ -39,15 +40,27 @@ public class RequestExamples {
 	HttpResponse postRequestWithBody(String json) throws ClientProtocolException, IOException {
 		return Request.Post("http://someurl")
 				.addHeader("app-header", "example")
-				.bodyString(json, ContentType.APPLICATION_JSON)
+				.bodyString(json, ContentType.APPLICATION_JSON)		
 				.execute().returnResponse();
 	}
+	
+	void postRequestWithBody2(String json) throws ClientProtocolException, IOException {
+		HttpResponse response = Request.Post("http://someurl")
+				.addHeader("app-header", "example")
+				.bodyString(json, ContentType.APPLICATION_JSON)		
+				.execute().returnResponse();
+		ContentResponseHandler contentHandler = new ContentResponseHandler();
+		String body = contentHandler.handleEntity(response.getEntity()).asString();
+		int httpStatus = response.getStatusLine().getStatusCode();
+	}
+	
 	HttpResponse requestViaProxy() throws ClientProtocolException, IOException  {
 		return Request.Get("http://someurl")
 				.addHeader("app-header", "example")
 				.viaProxy(new HttpHost("myproxy", 8080))
 				.execute().returnResponse();
 	}
+	
 	HttpResponse requestViaProxy2() throws ClientProtocolException, IOException  {
 		Executor executor = Executor.newInstance();
 		return executor.execute(
@@ -74,20 +87,9 @@ public class RequestExamples {
 	AppResponse getRequest() throws ClientProtocolException, IOException {
 		return Request.Get("http://someurl")
 				.execute().handleResponse(
-						new ResponseHandler<AppResponse>(){
-							@Override
-							public AppResponse handleResponse(HttpResponse response)
-									throws ClientProtocolException, IOException {
-								AppResponse appResponseData = new AppResponse();
-								HttpEntity entity = response.getEntity();
-								appResponseData.httpStatus = response.getStatusLine().getStatusCode();
-								ContentResponseHandler contentHandler = new ContentResponseHandler();
-								appResponseData.content = contentHandler.handleEntity(entity);
-								return appResponseData;
-							}
-						}
-						);
+						new AppResponseHandler());
 	}
+	
 	String ignoreSslErrorsRequest() throws Exception {
 		Executor executor = Executor.newInstance(noSslHttpClient());
 		return executor.execute(Request.Get("http://someurl")).returnContent().asString();
@@ -120,25 +122,27 @@ public class RequestExamples {
 			return Executor.newInstance();
 		}
 	}
-
-
 }
 
 class AppResponse {
-	public Content content = Content.NO_CONTENT;
-	public int httpStatus = HttpStatus.SC_OK;
-	public String jsonBody = "";
+	int httpStatus = HttpStatus.SC_OK;
+	String jsonBody = Strings.EMPTY;
+	
+	AppResponse(int httpStatus, String jsonBody) {
+		this.httpStatus = httpStatus;
+		this.jsonBody = jsonBody;
+	}
 }
 
 class AppResponseHandler implements ResponseHandler<AppResponse> {
 
 	@Override
 	public AppResponse handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-		AppResponse appResponseData = new AppResponse();
 		HttpEntity entity = response.getEntity();
-		appResponseData.httpStatus = response.getStatusLine().getStatusCode();
 		ContentResponseHandler contentHandler = new ContentResponseHandler();
-		appResponseData.content = contentHandler.handleEntity(entity);
-		return appResponseData;
+		AppResponse appResponse = new AppResponse(
+				response.getStatusLine().getStatusCode(),
+				contentHandler.handleEntity(entity).asString());
+		return appResponse;
 	}
 }
