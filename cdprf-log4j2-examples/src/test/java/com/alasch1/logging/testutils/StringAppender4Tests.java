@@ -59,7 +59,7 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	}
 	
 	/**
-	 * Executes logging implemented by AppendProcedure
+	 * Executes logging implemented by AppendProcedure w/o filter
 	 * Starts/stops appender under the veil
 	 * 
 	 * @param procedure
@@ -67,7 +67,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullablePatternString
 	 * @param nullableHeaderString
 	 */
-	public static void append(AppendProcedure procedure, Logger logger, String nullablePatternString, String nullableHeaderString) {
+	public static void append(
+			AppendProcedure procedure, Logger logger, String nullablePatternString, String nullableHeaderString) {
 		StringAppender4Tests appender = startAppender(logger, nullablePatternString, nullableHeaderString, null);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
@@ -82,7 +83,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullablePatternString
 	 * @param filter
 	 */
-	public static void appendWithFilter(AppendProcedure procedure, Logger logger, String nullablePatternString, Filter filter) {
+	public static void appendWithFilter(
+			AppendProcedure procedure, Logger logger, String nullablePatternString, Filter filter) {
 		StringAppender4Tests appender = startAppender(logger, nullablePatternString, null, filter);
 		procedure.execute(appender);		
 		appender.stopAppender(logger);
@@ -105,7 +107,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 	 * @param nullableHeaderString
 	 * @return
 	 */
-	private static StringAppender4Tests createStringAppender(String nullablePatternString, String nullableHeaderString, Filter nullableFilter) {
+	private static StringAppender4Tests createStringAppender(
+			String nullablePatternString, String nullableHeaderString, Filter nullableFilter) {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PatternLayout layout;
 		if (nullablePatternString == null) {
@@ -157,7 +160,8 @@ public class StringAppender4Tests extends AbstractOutputStreamAppender<StringApp
 		
 		ByteArrayOutputStream stream;
 
-		protected StringOutput4TestsStreamManager(final ByteArrayOutputStream os, final String streamName, Layout<?> layout) {
+		protected StringOutput4TestsStreamManager(
+				final ByteArrayOutputStream os, final String streamName, Layout<?> layout) {
 			super(os, streamName, layout, true);
 			stream = os;
 		}
