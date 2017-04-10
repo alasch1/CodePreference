@@ -1,4 +1,4 @@
-package akkaExamples.actors;
+package examples.akkaExamples.actors;
 
 import java.util.concurrent.TimeUnit;
 
@@ -7,7 +7,7 @@ import akka.actor.ActorRef;
 import akka.actor.Cancellable;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
-import akkaExamples.actors.HelloAnyone.Anyone;
+import examples.akkaExamples.actors.HelloAnyone.Anyone;
 import scala.concurrent.duration.Duration;
 
 public class HelloScheduler extends AbstractActor {

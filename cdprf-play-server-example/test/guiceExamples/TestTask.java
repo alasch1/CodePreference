@@ -5,7 +5,7 @@ import static play.inject.Bindings.bind;
 
 import org.junit.Test;
 
-import guiceExamples.cache.CacheProvider;
+import examples.guiceExamples.cache.CacheProvider;
 import play.Application;
 import play.Mode;
 import play.inject.guice.GuiceApplicationBuilder;

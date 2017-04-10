@@ -1,4 +1,4 @@
-package guiceExamples.cache;
+package examples.guiceExamples.cache;
 
 import javax.inject.Inject;
 

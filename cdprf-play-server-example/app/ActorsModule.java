@@ -1,8 +1,8 @@
 import com.google.inject.AbstractModule;
 
-import akkaExamples.actors.injection.SaySomethingParentActor;
-import akkaExamples.actors.HelloAnyone;
-import akkaExamples.actors.injection.SaySomethingActor;
+import examples.akkaExamples.actors.HelloAnyone;
+import examples.akkaExamples.actors.injection.SaySomethingActor;
+import examples.akkaExamples.actors.injection.SaySomethingParentActor;
 import play.libs.akka.AkkaGuiceSupport;
 
 public class ActorsModule extends AbstractModule implements AkkaGuiceSupport {

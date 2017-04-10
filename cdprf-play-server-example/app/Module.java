@@ -1,11 +1,11 @@
-import guiceExamples.cache.CacheProvider;
-import guiceExamples.cache.RuntimeCacheProvider;
 import play.Configuration;
 import play.Environment;
 
 import com.google.inject.AbstractModule;
 
 import customization.StartupHandler;
+import examples.guiceExamples.cache.CacheProvider;
+import examples.guiceExamples.cache.RuntimeCacheProvider;
 
 /**
  * This class is a Guice module that tells Guice how to bind several

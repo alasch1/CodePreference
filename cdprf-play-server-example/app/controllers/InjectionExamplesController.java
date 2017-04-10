@@ -1,9 +1,5 @@
 package controllers;
 
-import guiceExamples.cache.CacheProvider;
-import guiceExamples.sessionProvider.SessionDTO;
-import guiceExamples.sessionProvider.SessionInCacheProvider;
-
 import java.io.ByteArrayInputStream;
 
 import javax.inject.Inject;
@@ -20,6 +16,10 @@ import views.html.injectappexample;
 
 import com.alasch1.logging.impl.LoggerFactory;
 import com.google.inject.Provider;
+
+import examples.guiceExamples.cache.CacheProvider;
+import examples.guiceExamples.sessionProvider.SessionDTO;
+import examples.guiceExamples.sessionProvider.SessionInCacheProvider;
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.

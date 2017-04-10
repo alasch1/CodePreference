@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import akkaExamples.actors.HelloSchedularMonitor;
+import examples.akkaExamples.actors.HelloSchedularMonitor;
 import play.Configuration;
 import play.libs.Json;
 

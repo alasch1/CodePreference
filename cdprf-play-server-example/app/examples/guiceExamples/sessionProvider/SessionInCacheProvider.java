@@ -1,6 +1,4 @@
-package guiceExamples.sessionProvider;
-
-import guiceExamples.cache.CacheProvider;
+package examples.guiceExamples.sessionProvider;
 
 import javax.inject.Inject;
 
@@ -9,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import play.cache.CacheApi;
 
 import com.alasch1.logging.impl.LoggerFactory;
+
+import examples.guiceExamples.cache.CacheProvider;
 
 //@Singleton
 public class SessionInCacheProvider implements SessionProvider {

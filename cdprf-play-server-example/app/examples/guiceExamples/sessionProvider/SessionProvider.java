@@ -1,4 +1,4 @@
-package guiceExamples.sessionProvider;
+package examples.guiceExamples.sessionProvider;
 
 import com.google.inject.ImplementedBy;
 

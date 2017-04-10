@@ -1,4 +1,4 @@
-package guiceExamples.sessionProvider;
+package examples.guiceExamples.sessionProvider;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package akkaExamples.actors;
+package examples.akkaExamples.actors;
 
 import com.google.inject.Inject;
 

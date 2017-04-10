@@ -1,6 +1,6 @@
 package utils;
 
-import guiceExamples.cache.CacheProvider;
+import examples.guiceExamples.cache.CacheProvider;
 import play.cache.CacheApi;
 
 /**

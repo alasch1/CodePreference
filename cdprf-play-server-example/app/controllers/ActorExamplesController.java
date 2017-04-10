@@ -10,10 +10,10 @@ import com.google.inject.name.Named;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import akkaExamples.actors.HelloAnyone;
-import akkaExamples.actors.HelloAnyone.Anyone;
-import akkaExamples.actors.injection.SaySomethingActor;
-import akkaExamples.actors.injection.SaySomethingParentActor;
+import examples.akkaExamples.actors.HelloAnyone;
+import examples.akkaExamples.actors.HelloAnyone.Anyone;
+import examples.akkaExamples.actors.injection.SaySomethingActor;
+import examples.akkaExamples.actors.injection.SaySomethingParentActor;
 import play.mvc.Controller;
 import play.mvc.Result;
 import scala.compat.java8.FutureConverters;

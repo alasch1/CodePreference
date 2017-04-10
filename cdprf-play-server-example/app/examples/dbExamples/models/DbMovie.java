@@ -1,4 +1,4 @@
-package dbExamples.models;
+package examples.dbExamples.models;
 
 import java.util.Date;
 
