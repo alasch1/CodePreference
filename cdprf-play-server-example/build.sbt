@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
 mappings in Universal ++= directory("scripts")
 
 val lombokVersion = "1.16.6"
-val log4jVersion = "2.4.1"
+val log4jVersion = "2.7"
 val cdprfVersion = "1.0.0-SNAPSHOT"
 val hibernateVersion = "4.3.10.Final"
 val commonsIOVersion = "2.4"
