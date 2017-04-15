@@ -39,5 +39,5 @@ libraryDependencies ++= Seq(
         "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
  		"org.hibernate" % "hibernate-entitymanager" % hibernateVersion,
  		"commons-io" % "commons-io" % commonsIOVersion,
-		"com.alasch1.codepreference.examples" % "cdprf-log4j2-examples" % cdprfVersion
+		"com.alasch1.cdprf.examples" % "cdprf-log4j2-examples" % cdprfVersion
 )

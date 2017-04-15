@@ -1,0 +1,7 @@
+@* import play.Application *@
+@(message: String)(app: play.Application)
+
+@main("CodePreference - Application parameter example") {
+	<h1>@message</h1>
+	<p>@app.configuration()</p>
+}

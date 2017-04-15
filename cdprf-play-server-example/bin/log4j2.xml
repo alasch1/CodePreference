@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration  monitorInterval="300">
+	<Properties>
+		<property name="logFile">PlayServerExample</property>
+		<property name="logDir">logs</property>
+	</Properties>
+
+	<Appenders>
+		<Console name="SysOut">
+			<!-- Layout with method and line -->
+			<PatternLayout>
+				<pattern>
+					%d %p (%c{1.}.%M:%L)- %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+
+		<RollingFile name="AppLog" fileName="${logDir}/${logFile}.log"
+			filePattern="${logDir}/${logFile}-%d{dd-MM-yyyy}-%i.log">
+			<PatternLayout> 
+				<header>
+					${java:runtime}${sys:line.separator}${java:vm}${sys:line.separator}${java:os}${sys:line.separator}${java:hw}
+					${sys:line.separator}${sys:line.separator}
+				</header>
+				<footer>
+					End of file
+				</footer>
+				<pattern>
+					%d %p (%c{1.}.%M:%L)- %m%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="min" max="21"/>
+		</RollingFile>
+		
+		
+	</Appenders>
+
+	<Loggers>
+		<root level="info">
+		</root>
+
+		<logger name="controllers" level="debug" additivity="false">
+			<appenderRef ref="SysOut" />
+			<appenderRef ref="AppLog" />
+		</logger>
+		
+		<logger name="guiceExamples" level="debug" additivity="false">
+			<appenderRef ref="SysOut" />
+			<appenderRef ref="AppLog" />
+		</logger>
+	</Loggers>
+</Configuration>

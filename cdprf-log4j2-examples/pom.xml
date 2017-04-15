@@ -8,7 +8,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.alasch1.codepreference.examples</groupId>
+	<groupId>com.alasch1.cdprf.examples</groupId>
 	<artifactId>cdprf-log4j2-examples</artifactId>
 	<description>sources for log4j2 posts</description>
 	<packaging>jar</packaging>
@@ -19,7 +19,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.alasch1.codepreference</groupId>
+			<groupId>com.alasch1.cdprf</groupId>
 			<artifactId>cdprf-commons</artifactId>
 			<version>${cdprf.commons.version}</version>
 		</dependency>
@@ -42,7 +42,7 @@
 		<!-- JUnits -->
 		<!-- commons tests dependencies -->
 		<dependency>
-			<groupId>com.alasch1.codepreference</groupId>
+			<groupId>com.alasch1.cdprf</groupId>
 			<artifactId>cdprf-commons</artifactId>
 			<type>test-jar</type>
 			<version>${cdprf.commons.version}</version>

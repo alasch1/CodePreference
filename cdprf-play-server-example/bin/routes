@@ -1,0 +1,86 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page and several examples
+GET /                     controllers.HomeController.index
+GET /string2file	      controllers.HomeController.getCsvFile1
+GET /csvfile			  controllers.HomeController.getCsvFile2
+
+# Injection examples controller 
+GET /startSession       controllers.InjectionExamplesController.startSession
+GET /restoreSession     controllers.InjectionExamplesController.restoreSession
+GET /cache              controllers.InjectionExamplesController.getCacheData
+GET /injectAppExample	controllers.InjectionExamplesController.injectAppExample
+
+# Akka actors example controller
+GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
+GET /saySomething/:name/:something    controllers.ActorExamplesController.saySomething(name, something)
+
+# File upload example
+POST /uploadFile		controllers.HomeController.uploadFile
+POST /uploadFileAsText		controllers.HomeController.uploadFileAsText
+##############################################################
+# Default values examples
+##############################################################
+
+# defaultLineNumParamExample
+# Valid urls:
+# http://localhost:9000/defaultLineNumParamExample/2
+# http://localhost:9000/defaultLineNumParamExample/2?pageNum=2
+GET /defaultLineNumParamExample/:page	controllers.RoutesExamplesController.getPageLine(page:Int,pageNum:Int ?= 10) 
+
+# invalidDefaultLineNumParamExample
+# compilation error: It is not allowed to specify a fixed or default value for parameter: 'page' extracted from the path
+# GET /invalidDefaultLineNumParamExample/:page	controllers.RoutesExamplesController.getPageLine(page:Int ?= 10) 
+
+# fixedLineNumParamExample
+# Valid url:
+# http://localhost:9000/fixedLineNumParamExample/2
+# Ignored parameter:
+# http://localhost:9000/fixedLineNumParamExample/2?pageNum=2
+# Error on url:
+# http://localhost:9000/fixedLineNumParamExample/2/3
+GET /fixedLineNumParamExample/:page		controllers.RoutesExamplesController.getPageLine(page:Int,pageNum:Int = 10) 
+
+# defaultPageNoteParamExample
+# Valid urls:
+# http://localhost:9000/defaultPageNoteParamExample/2
+# http://localhost:9000/defaultPageNoteParamExample/2?pageNote=ppp 
+GET /defaultPageNoteParamExample/:page		controllers.RoutesExamplesController.getPageNote(page:Int,pageNote ?= null) 
+
+# fixedPageNoteParamExample
+# Valid urls:
+# http://localhost:9000/fixedPageNoteParamExample/2
+# Ignored parameter:
+# http://localhost:9000/fixedPageNoteParamExample/2?pageNote=ppp
+# Error on url:
+# http://localhost:9000/fixedPageNoteParamExample/2/pageNote=ppp
+GET /fixedPageNoteParamExample/:page		controllers.RoutesExamplesController.getPageNote(page:Int,pageNote = "static note") 
+
+# pageExample5 - regular expression
+GET /pageExample5/:page/$pageNum<[^/d*]>	controllers.RoutesExamplesController.getPageLine(page:Int,pageNum:Int)
+
+# Redirect route examples
+# Redirect to another controller
+GET /redirect2home				controllers.RoutesExamplesController.redirectToHomeController
+# Redirect to static html
+GET /redirect2example1			controllers.RoutesExamplesController.redirectToExample1
+GET /redirect2indexHtml				controllers.RoutesExamplesController.redirectToIndexHtml
+GET /redirect2staticHtml		controllers.RoutesExamplesController.redirectToStaticHtml
+
+# exact route example
+GET /thisIsMyPage		controllers.RoutesExamplesController.exactRoute(myMessage)
+
+# case-insensitive route example
+GET /$dummy<(?i)thisIsMyPage>	controllers.RoutesExamplesController.insensitiveRoute(dummy)
+
+# Map static html file example
+GET /example1				controllers.Assets.at(path="/public/html", file="staticHtmlFileExample.html")
+
+# abgularjs client example
+GET /angularjs			controllers.Assets.at(path="/public", file ="index.html")
+GET /*file				controllers.Assets.at(path="/public", file)
+ 
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)

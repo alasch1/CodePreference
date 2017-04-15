@@ -10,7 +10,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.alasch1.codepreference.examples</groupId>
+	<groupId>com.alasch1.cdprf.examples</groupId>
 	<artifactId>cdprf-mocking-examples</artifactId>
 	<packaging>jar</packaging>
 
