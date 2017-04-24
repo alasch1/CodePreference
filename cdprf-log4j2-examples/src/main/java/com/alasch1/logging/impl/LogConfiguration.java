@@ -15,10 +15,9 @@ public final class LogConfiguration extends AppPropertiesConfiguration {
 	
 	// Properties KEYS and default values
 	private static final String TAG = "tag";
-	private static final int PROCESS_ID_TAG_NUMBER = 1;
-	private static final int THREAD_ID_TAG_NUMBER = 2;
+	private static final int INVOCATION_TAG_NUMBER = 1;
+	private static final int OPERATION_TAG_NUMBER = 2;
 	private static final int USER_ID_TAG_NUMBER = 3;
-	private static final int CONFERENCE_ID_TAG_NUMBER = 4;
 	
 	private AppConfiguration appConfiguration;
 
@@ -42,20 +41,16 @@ public final class LogConfiguration extends AppPropertiesConfiguration {
 		this.appConfiguration = appConfiguration;
 	}
 
-	public String getConferenceIdTag() {
-		return getTag(CONFERENCE_ID_TAG_NUMBER);
+	public String getInvocationTag() {
+		return getTag(INVOCATION_TAG_NUMBER);
+	}	
+	
+	public String getOperationTag() {
+		return getTag(OPERATION_TAG_NUMBER);
 	}
 	
 	public String getUserIdTag() {
 		return getTag(USER_ID_TAG_NUMBER);
-	}
-	
-	public String getProcessIdTag() {
-		return getTag(PROCESS_ID_TAG_NUMBER);
-	}
-	
-	public String getThreadIdTag() {
-		return getTag(THREAD_ID_TAG_NUMBER);
 	}
 	
 	private String getTag(int tagNumber) {

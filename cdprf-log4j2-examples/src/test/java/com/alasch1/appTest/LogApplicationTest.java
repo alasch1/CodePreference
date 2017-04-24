@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.alasch1.cdprf.commons.utils.ConfigUtil;
+import com.alasch1.cdprf.logging.api.AppContextValues;
 import com.alasch1.cdprf.logging.api.LogContext;
 import com.alasch1.logging.impl.LogConfiguration;
 import com.alasch1.logging.impl.LogContextHandler;
@@ -23,6 +24,8 @@ public class LogApplicationTest {
 	private static Logger LOG;// = LogManager.getLogger();	
 	private static LogConfiguration logConfiguration;
 	private static AppConfigurationMock appConfig;
+	private static final  String USER1 = "user-1";
+	private static final  String USER2 = "user-2";
 	
 	public static void main(String[] args) throws ConfigurationException {
 		initConfiguration();
@@ -31,7 +34,7 @@ public class LogApplicationTest {
 	}
 	
 	private static void printBulkMessages() {
-		LogContext ctxt = LogContextHandler.createContext("user-1");
+		LogContext ctxt = LogContextHandler.createContext(new AppContextValues(USER1));
 		
 		try {			
 			LOG.info("ApplicationTest Start");
@@ -51,7 +54,7 @@ public class LogApplicationTest {
 	}
 	
 	private static void printMessageExample() {
-		LogContext ctxt = LogContextHandler.createContext("user-2");
+		LogContext ctxt = LogContextHandler.createContext(new AppContextValues(USER2));
 		
 		try {			
 			LOG.info("ApplicationTest Start");
