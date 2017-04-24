@@ -30,10 +30,9 @@ public class TestLogConfiguration {
 	@Test
 	public void testGetProperties() throws ConfigurationException {
 		VerbalTestExecutor.executeTest("testGetProperties", () -> {
-			assertFalse("Conference ID tag is missing", configuration.getConferenceIdTag().isEmpty());
+			assertFalse("Invocation tag is missing", configuration.getInvocationTag().isEmpty());
 			assertFalse("User ID tag is missing", configuration.getUserIdTag().isEmpty());
-			assertFalse("Process ID tag is missing", configuration.getProcessIdTag().isEmpty());
-			assertFalse("ThreadID tag is missing", configuration.getThreadIdTag().isEmpty());
+			assertFalse("Operation tag is missing", configuration.getOperationTag().isEmpty());
 		});
 	}
 }

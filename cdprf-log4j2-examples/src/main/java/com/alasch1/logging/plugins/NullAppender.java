@@ -10,18 +10,15 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
 import org.apache.logging.log4j.core.config.plugins.PluginElement;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
-import org.apache.logging.log4j.core.layout.PatternLayout;
 
 /**
  * NullAppender plugin implementation
  * 
- * @author aschneider
+ * @author ala schneider
  *
  */
 @Plugin(name = "NullAppender", category = "Core", elementType = "appender", printObject = true)
 public class NullAppender extends AbstractAppender {
-
-	private static final long serialVersionUID = 1L;
 
 	protected NullAppender(String name, Filter filter, Layout<? extends Serializable> layout, boolean ignoreExceptions) {
 		super(name, filter, layout, ignoreExceptions);

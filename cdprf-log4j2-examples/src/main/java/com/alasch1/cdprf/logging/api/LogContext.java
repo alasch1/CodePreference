@@ -13,14 +13,14 @@ public interface LogContext {
 	/**
 	 * Initializes logger Thread Context with the default values
 	 */
-	void init();
+	void init(AppContextValues appContextValues);
 	
 	/**
 	 * Initializes logger Thread Context with the default values and additional tags
 	 * 
 	 * @param addContextTags
 	 */
-	void init(Map<String, String> addContextTags);
+	void init(AppContextValues appContextValues, Map<String, String> addContextTags);
 	
 	/**
 	 * Clears logger Thread Context  

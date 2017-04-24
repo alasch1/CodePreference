@@ -11,6 +11,7 @@
 		<property name="tag6">${bundle:contextTags:tag6}</property>
 		<property name="errLogFile">${logFile}-errors</property>
 		<property name="errLogDir">errors-logs</property>
+		<property name="patternFormat">%d %p [%X{${tag1}}|%X{${tag2}}|%X{${tag3}}|%X{${tag4}}|%X{${tag5}}] (%c{1.}.%M:%L)- %m%n</property>
 	</Properties>
 
 	<Appenders>
@@ -19,7 +20,7 @@
 			<!-- Layout with method and line -->
 			<PatternLayout>
 				<pattern>
-					%d %p [%X{${tag1}}|%X{${tag2}}|%X{${tag3}}|%X{${tag4}}|%X{${tag5}}|%X{${tag6}}] (%c{1.}.%M:%L)- %m%n
+					${patternFormat}
 				</pattern>
 			</PatternLayout>
 		</Console>
@@ -29,14 +30,13 @@
 			<ErrorPatternsFilter errorsPatterns="com.alasch1.logging.mocks.ErrorsPatterns4Tests" dropOnMatch="true"/>
 			<PatternLayout> 
 				<header>
-					${java:runtime}${sys:line.separator}${java:vm}${sys:line.separator}${java:os}${sys:line.separator}${java:hw}
-					${sys:line.separator}$${config:all}${sys:line.separator}
+					Version: ${bundle:contextTags:version}${sys:line.separator}${osinfo:all}${cpuinfo:all}${meminfo:all}${pinfo:all}${diskinfo:all}${gcinfo:all}${netwinfo:all}$${config:all}
 				</header>
 				<footer>
 					End of file
 				</footer>
 				<pattern>
-					%d %p [%X{${tag1}}|%X{${tag2}}|%X{${tag3}}|%X{${tag4}}|%X{${tag5}}|%X{${tag6}}] (%c{1.}.%M:%L)- %m%n
+					${patternFormat}
 				</pattern>
 			</PatternLayout>
 			<Policies>
