@@ -21,9 +21,9 @@ target/
 *.orig
 
 */dependency-reduced-pom.xml
-play-server-example/public/client/*
-play-server-example/.cache-main
-play-server-example/.cache-tests
-play-server-example/bin/
-play-server-example/bin/activator
-play-server-example/bin/activator.bat
+cdprf-play-server-example/public/client/*
+cdprf-play-server-example/.cache-main
+cdprf-play-server-example/.cache-tests
+cdprf-play-server-example/bin/
+cdprf-play-server-example/bin/activator
+cdprf-play-server-example/bin/activator.bat
