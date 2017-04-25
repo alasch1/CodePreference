@@ -14,10 +14,10 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.status.StatusLogger;
 
 /**
- * Implements format lookup ${cpuinfo} for PatternLayout
+ * Implements format lookup ${cpuinfo:all} for PatternLayout
  * Interpolates the lookup into cpu info
  * 
- * @author as390x
+ * @author ala schneider
  *
  */
 @Plugin(name = "cpuinfo", category = "Lookup")
@@ -28,16 +28,20 @@ public class CpuInfoLookup extends InfoLookupBase {
     private static final Logger LOGGER = StatusLogger.getLogger();
     private static final Marker LOOKUP = MarkerManager.getMarker("LOOKUP");
 	
+    private static final String SYSTEM_CPU_LOAD = "System Cpu Load";
+    private  static final String PROCESS_CPU_LOAD = "Process Cpu Load";
+    private  static final String AVAILABLE_PROCESSORS = "Available processors(cores)";
+    
 	private static final String SYSTEM_CPU_LOAD_ATTR = "SystemCpuLoad";
 	private  static final String PROCESS_CPU_LOAD_ATTR = "ProcessCpuLoad";
 	
 	@Override
 	protected String getInfo() {
-		return String.format("%s:%s%s", CPU_INFO_TITLE, availableProcessorsInfo(), cpuLoadInfo());
+		return String.format("%s:%n%s%s", CPU_INFO_TITLE, availableProcessorsInfo(), cpuLoadInfo());
 	}
 
 	private String availableProcessorsInfo() {
-		return String.format("\n\tAvailable processors(cores):%d" , Runtime.getRuntime().availableProcessors());
+		return String.format(VAL_STD_FORMAT, AVAILABLE_PROCESSORS, Runtime.getRuntime().availableProcessors());
 	}
 	
 	private String cpuLoadInfo() {
@@ -48,8 +52,8 @@ public class CpuInfoLookup extends InfoLookupBase {
 			name = ObjectName.getInstance("java.lang:type=OperatingSystem");
 			AttributeList list = mbs.getAttributes(name, new String[] { SYSTEM_CPU_LOAD_ATTR, PROCESS_CPU_LOAD_ATTR });
 			if (!list.isEmpty()) {
-				sb.append("\tSystem Cpu Load: " + getComponentValue((Attribute) list.get(0), SYSTEM_CPU_LOAD_ATTR));
-				sb.append("\tProcess Cpu Load: " + getComponentValue((Attribute) list.get(1),PROCESS_CPU_LOAD_ATTR));
+				sb.append(String.format(VAL_STD_FORMAT, SYSTEM_CPU_LOAD, getComponentValue((Attribute) list.get(0), SYSTEM_CPU_LOAD_ATTR)));
+				sb.append(String.format(VAL_STD_FORMAT, PROCESS_CPU_LOAD, getComponentValue((Attribute) list.get(1),PROCESS_CPU_LOAD_ATTR)));
 			}
 			sb.append(END_LINE);	
 			return sb.toString();

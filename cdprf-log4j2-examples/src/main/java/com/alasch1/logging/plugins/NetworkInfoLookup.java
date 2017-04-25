@@ -5,19 +5,25 @@ import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.Enumeration;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
+import org.apache.logging.log4j.status.StatusLogger;
 
 /**
- * Implements format lookup ${netwinfo} for PatternLayout
+ * Implements format lookup ${netwinfo:all} for PatternLayout
  * Interpolates the lookup into network info
  * 
- * @author as390x
+ * @author ala schneider
  *
  */
 @Plugin(name = "netwinfo", category = "Lookup")
 public class NetworkInfoLookup extends InfoLookupBase {
 
 	public static final String NETWORK_INFO_TITLE = "Network info";
+    private static final Logger LOGGER = StatusLogger.getLogger();
+    private static final Marker LOOKUP = MarkerManager.getMarker("LOOKUP");
 	
 	private static final String LOCAL_HOST_IP = "Localhost IP";
 	private static final String DISPLAY_NAME = "Display name";
@@ -66,7 +72,7 @@ public class NetworkInfoLookup extends InfoLookupBase {
 		StringBuilder sb = new StringBuilder();
 		if(inetAddresses.hasMoreElements()) {
 			for (InetAddress a:Collections.list(inetAddresses)) {
-				String normalized = a.toString().replaceAll("%", "|");
+				String normalized = a.toString().replaceAll("%", "#").replaceAll("/", "");
 				sb.append(normalized).append("\t");
 			}
 		}
@@ -78,6 +84,7 @@ public class NetworkInfoLookup extends InfoLookupBase {
 			return java.net.InetAddress.getLocalHost().getHostAddress();
 		} 
 		catch (Exception e) {
+            LOGGER.warn(LOOKUP, "Failed to get host address");
 			return "unknown host";
 		}
 	}

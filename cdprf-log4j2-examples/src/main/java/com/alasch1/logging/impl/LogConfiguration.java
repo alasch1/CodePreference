@@ -6,7 +6,7 @@ import com.alasch1.cdprf.commons.configuration.api.AppPropertiesConfiguration;
 /**
  * Implements logging configuration
  * 
- * @author aschneider
+ * @author ala schneider
  *
  */
 public final class LogConfiguration extends AppPropertiesConfiguration {

@@ -5,10 +5,10 @@ import java.lang.management.ManagementFactory;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 
 /**
- * Implements format lookup ${gcinfo} for PatternLayout
+ * Implements format lookup ${gcinfo:all} for PatternLayout
  * Interpolates the lookup into GC (garbage collection) info
  * 
- * @author as390x
+ * @author ala schneider
  *
  */
 @Plugin(name = "gcinfo", category = "Lookup")
@@ -41,23 +41,13 @@ public class GCInfoLookup extends InfoLookupBase {
 		});
 		
 		sb.append(END_LINE)
-		.append(String.format(VAL_STD_FORMAT,TOTAL_GC, totalGarbageCollections))
-		.append(String.format(VAL_STD_FORMAT,TOTAL_GC_TIME, garbageCollectionTime));
+			.append(String.format(VAL_STD_FORMAT,TOTAL_GC, totalGarbageCollections))
+			.append(String.format(VAL_STD_FORMAT,TOTAL_GC_TIME, garbageCollectionTime));
 		
 		if (totalGarbageCollections != 0) {
 			sb.append(String.format(VAL_STD_FORMAT, AVE_TIME, garbageCollectionTime/totalGarbageCollections));
 		}
 		sb.append(END_LINE);
-		
-//		sb.append(String.format("%n\t%s: %s\t%s: %s\t%s: %s%n", 
-//				// The total number of collections that have occurred
-//				TOTAL_GC, totalGarbageCollections,
-//				// The approximate accumulated collection elapsed time in milliseconds
-//				TOTAL_GC_TIME, garbageCollectionTime,
-//				// An estimate for how log takes each collection
-//				AVE_TIME, totalGarbageCollections != 0?
-//					garbageCollectionTime/totalGarbageCollections:Strings.EMPTY));
-		return sb.toString();
-	}
+		return sb.toString();	}
 
 }
