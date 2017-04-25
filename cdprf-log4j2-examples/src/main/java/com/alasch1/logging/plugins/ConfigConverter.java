@@ -10,7 +10,7 @@ import com.alasch1.cdprf.commons.configuration.api.AppConfiguration;
  * Class implements format converter %config for PatternLayout
  * Interpolates the converter into configuration toString method
   * 
- * @author aschneider
+ * @author ala schneider
  *
  */
 @Plugin(name = "config", category = "Converter")

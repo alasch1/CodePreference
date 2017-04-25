@@ -3,10 +3,10 @@ package com.alasch1.logging.plugins;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 
 /**
- * Implements format lookup ${meminfo} for PatternLayout
+ * Implements format lookup ${meminfo:all} for PatternLayout
  * Interpolates the lookup into runtime memory info
  * 
- * @author as390x
+ * @author ala schneider
  *
  */
 @Plugin(name = "meminfo", category = "Lookup")
@@ -17,6 +17,8 @@ public class MemoryInfoLookup extends InfoLookupBase {
 	private static final String MACHINE_TOTAL_USAGE = "Machine total(bytes)";
 	private static final String JVM_USAGE = "JVM total memory(bytes)";
 	private static final String JVM_FREE = "JVM free memory(bytes)";
+	private static final String NUM_VALUE_FMT = "\t%s: %,1d";
+	private static final String COMMA = ",";
 	
 	@Override
 	protected String getInfo() {
@@ -24,10 +26,13 @@ public class MemoryInfoLookup extends InfoLookupBase {
 	}
 	
 	private String memoryUsage() {
-		return String.format("%n\t%s: %,1d\t%s: %,1d\t%s: %,1d%n",
-				MACHINE_TOTAL_USAGE, Runtime.getRuntime().maxMemory(), 
-				JVM_USAGE, Runtime.getRuntime().totalMemory(),
-				JVM_FREE, Runtime.getRuntime().freeMemory());
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(END_LINE)
+			.append(String.format(NUM_VALUE_FMT, MACHINE_TOTAL_USAGE, Runtime.getRuntime().maxMemory())).append(COMMA)
+			.append(String.format(NUM_VALUE_FMT, JVM_USAGE, Runtime.getRuntime().totalMemory())).append(COMMA)
+			.append(String.format(NUM_VALUE_FMT, JVM_FREE, Runtime.getRuntime().freeMemory())).append(END_LINE);
+		return sb.toString();
 	}
 
 }

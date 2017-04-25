@@ -23,7 +23,7 @@ import com.alasch1.logging.plugins.ConfigurationLookup;
  * 	- creates LogContext for a current thread and returns the context
  * 	- the user which received the created context should take care to clear it in the end
  * 
- * @author aschneider
+ * @author ala schneider
  *
  */
 public class LogContextHandler implements LogContext {
