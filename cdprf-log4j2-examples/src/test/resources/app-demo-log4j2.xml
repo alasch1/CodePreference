@@ -11,7 +11,7 @@
 		<property name="tag6">${bundle:contextTags:tag6}</property>
 		<property name="errLogFile">${logFile}-errors</property>
 		<property name="errLogDir">errors-logs</property>
-		<property name="patternFormat">%d %p [%X{${tag1}}|%X{${tag2}}|%X{${tag3}}|%X{${tag4}}|%X{${tag5}}] (%c{1.}.%M:%L)- %m%n</property>
+		<property name="patternFormat">%d|%-5p|%-15.15X{${tag1}}|%-10.10X{${tag2}}|%-10.10X{${tag3}}|%X{${tag4}}|%X{${tag5}}|(%c{1.}.%M:%L)-%m%n</property>
 	</Properties>
 
 	<Appenders>

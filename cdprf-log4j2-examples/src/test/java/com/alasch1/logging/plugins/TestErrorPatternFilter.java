@@ -1,6 +1,8 @@
 package com.alasch1.logging.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import org.junit.Test;
 
 import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
 import com.alasch1.logging.impl.LogConfiguration;
-import com.alasch1.logging.impl.LogContextHandler;
+import com.alasch1.logging.impl.StdLogContext;
 import com.alasch1.logging.mocks.AppConfigurationMock;
 import com.alasch1.logging.mocks.ErrorsPatterns4Tests;
 import com.alasch1.logging.testutils.StringAppender4Tests;
@@ -27,7 +29,7 @@ public class TestErrorPatternFilter {
 	public void setUp() throws Exception {
 		logConfiguration = new LogConfiguration(new AppConfigurationMock());
 		logConfiguration.init();
-		LogContextHandler.setConfiguration(logConfiguration);
+		StdLogContext.setConfiguration(logConfiguration);
 	}
 
 	@After

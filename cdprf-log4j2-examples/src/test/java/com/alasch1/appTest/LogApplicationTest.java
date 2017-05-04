@@ -5,11 +5,10 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.alasch1.appTest.InvocationScopeLogger.Scope;
 import com.alasch1.cdprf.commons.utils.ConfigUtil;
-import com.alasch1.cdprf.logging.api.AppContextValues;
-import com.alasch1.cdprf.logging.api.LogContext;
 import com.alasch1.logging.impl.LogConfiguration;
-import com.alasch1.logging.impl.LogContextHandler;
+import com.alasch1.logging.impl.StdLogContext;
 import com.alasch1.logging.mocks.AppConfigurationMock;
 
 /**
@@ -34,36 +33,26 @@ public class LogApplicationTest {
 	}
 	
 	private static void printBulkMessages() {
-		LogContext ctxt = LogContextHandler.createContext(new AppContextValues(USER1));
-		
-		try {			
-			LOG.info("ApplicationTest Start");
-			LOG.info("Expected header is with initial signature");
-			
-			logMessagesBulk("Test message before header update");
-			
-			appConfig.setSignature("Signature was updated");
-			LOG.info("Expected header (in the next file) is with updated signature");
-			logMessagesBulk("Test message after header update");
-			
-			LOG.info("ApplicationTest End");
-		}
-		finally {
-			ctxt.clear();
-		}		
+		StdLogContext.createUserContext(USER1);
+		InvocationScopeLogger.fromScope(Scope.SCOPE1, "app test", LOG, StdLogContext.STD_FORMAT, "ApplicationTest Start");
+		//LOG.info("ApplicationTest Start");
+		LOG.info("Expected header is with initial signature");
+
+		logMessagesBulk("Test message before header update");
+
+		appConfig.setSignature("Signature was updated");
+		LOG.info("Expected header (in the next file) is with updated signature");
+		logMessagesBulk("Test message after header update");
+
+		InvocationScopeLogger.toScope(Scope.SCOPE1, "app test", LOG, StdLogContext.STD_FORMAT, "ApplicationTest End");
+		//LOG.info("ApplicationTest End");
 	}
 	
 	private static void printMessageExample() {
-		LogContext ctxt = LogContextHandler.createContext(new AppContextValues(USER2));
-		
-		try {			
-			LOG.info("ApplicationTest Start");
-			LOG.info("Test message");
-			LOG.info("ApplicationTest End");
-		}
-		finally {
-			ctxt.clear();
-		}		
+		StdLogContext.createUserContext(USER2);
+		LOG.info("ApplicationTest Start");
+		LOG.info("Test message");
+		LOG.info("ApplicationTest End");
 	}
 	
 	private static void logMessagesBulk(String message) {
@@ -78,7 +67,7 @@ public class LogApplicationTest {
 		logConfiguration = new LogConfiguration(appConfig);
 		logConfiguration.init();
 		LOG = initLog();
-		LogContextHandler.setConfiguration(logConfiguration);
+		StdLogContext.setConfiguration(logConfiguration);
 		LOG.info("Init configuration was done");
 	}
 	

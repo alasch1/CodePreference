@@ -23,7 +23,7 @@ public class TestErrPatterns {
 	public void setUp() throws Exception {
 		logConfiguration = new LogConfiguration(new AppConfigurationMock());
 		logConfiguration.init();
-		LogContextHandler.setConfiguration(logConfiguration);
+		StdLogContext.setConfiguration(logConfiguration);
 	}
 
 	@After

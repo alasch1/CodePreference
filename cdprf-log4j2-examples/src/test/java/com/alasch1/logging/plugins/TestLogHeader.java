@@ -1,6 +1,6 @@
 package com.alasch1.logging.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.alasch1.cdprf.commons.testutils.VerbalTestExecutor;
-import com.alasch1.cdprf.commons.utils.ConfigUtil;
 import com.alasch1.logging.mocks.AppConfigurationMock;
 import com.alasch1.logging.plugins.JvmProcessInfo.ProcessInfo;
 import com.alasch1.logging.testutils.Log4jHelper;
