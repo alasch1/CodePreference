@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.alasch1.logging.plugins">
+
+	<Appenders>
+		<NullAppender name="null">
+		</NullAppender>
+		
+		<Console name="console">
+			<PatternLayout>
+				<pattern>
+					%d %level{length=2} (%c{1.}.%M:%L) - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+		<File name="InfoFile" fileName="logs/info-logs.log">
+			<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+		</File>
+		<File name="ErrorsFile" fileName="logs/error-logs.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<root level="info">
+			<appenderRef ref="console" />
+			<appenderRef ref="InfoFile" />
+			<appenderRef ref="ErrorsFile" />
+		</root>
+
+		<logger name="com.alasch1.logging.examples" level="debug" additivity="false">
+			<appenderRef ref="console" />
+			<appenderRef ref="InfoFile" />
+			<appenderRef ref="ErrorsFile" />
+		</logger>
+
+ 	</Loggers>
+	
+</Configuration>
