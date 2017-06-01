@@ -10,8 +10,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava, LauncherJarPlugin
 
 //lazy val root = (project in file(".")).enablePlugins(PlayScala, LauncherJarPlugin)
 
-//scalaVersion := "2.11.8"
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
+//scalaVersion := "2.11.7"
 
 resolvers += "Local Maven Repository" at "file:///"+Path.userHome.absolutePath+"/.m2/repository"
 
