@@ -1,4 +1,4 @@
-package controllers;
+package controllers.inject.examples;
 
 import java.io.ByteArrayInputStream;
 

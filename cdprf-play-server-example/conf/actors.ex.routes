@@ -1,0 +1,4 @@
+
+# Akka actors example controller
+GET /sayHello/:name    controllers.actors.examples.ActorExamplesController.sayHello(name)
+GET /saySomething/:name/:something    controllers.actors.examples.ActorExamplesController.saySomething(name, something)

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.actors.examples;
 
 import static akka.pattern.Patterns.ask;
 

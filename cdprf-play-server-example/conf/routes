@@ -2,26 +2,20 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+-> /inject/examples  inject.ex.Routes
+-> /actors/examples	 actors.ex.Routes
+
 # An example controller showing a sample home page and several examples
 GET /                     controllers.HomeController.index
 GET /string2file	      controllers.HomeController.getCsvFile1
 GET /csvfile			  controllers.HomeController.getCsvFile2
 
-# Injection examples controller 
-GET /startSession       controllers.InjectionExamplesController.startSession
-GET /restoreSession     controllers.InjectionExamplesController.restoreSession
-GET /cache              controllers.InjectionExamplesController.getCacheData
-GET /injectAppExample	controllers.InjectionExamplesController.injectAppExample
-
-# Akka actors example controller
-GET /sayHello/:name    controllers.ActorExamplesController.sayHello(name)
-GET /saySomething/:name/:something    controllers.ActorExamplesController.saySomething(name, something)
-
 # File upload example
 POST /uploadFile		controllers.HomeController.uploadFile
 POST /uploadFileAsText		controllers.HomeController.uploadFileAsText
+
 ##############################################################
-# Default values examples
+# Routing and default values examples
 ##############################################################
 
 # defaultLineNumParamExample
@@ -75,12 +69,14 @@ GET /thisIsMyPage		controllers.RoutesExamplesController.exactRoute(myMessage)
 # case-insensitive route example
 GET /$dummy<(?i)thisIsMyPage>	controllers.RoutesExamplesController.insensitiveRoute(dummy)
 
+ 
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)
+
+
 # Map static html file example
 GET /example1				controllers.Assets.at(path="/public/html", file="staticHtmlFileExample.html")
 
 # abgularjs client example
 GET /angularjs			controllers.Assets.at(path="/public", file ="index.html")
 GET /*file				controllers.Assets.at(path="/public", file)
- 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)

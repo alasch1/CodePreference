@@ -1,0 +1,5 @@
+# Injection examples controller 
+GET /startSession       controllers.inject.examples.InjectionExamplesController.startSession
+GET /restoreSession     controllers.inject.examples.InjectionExamplesController.restoreSession
+GET /cache              controllers.inject.examples.InjectionExamplesController.getCacheData
+GET /injectAppExample	controllers.inject.examples.InjectionExamplesController.injectAppExample
