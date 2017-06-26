@@ -21,14 +21,10 @@ target/
 *.orig
 
 */dependency-reduced-pom.xml
-#cdprf-play-server-example/public/client/*
-#cdprf-play-server-example/.cache-main
-#cdprf-play-server-example/.cache-tests
-#cdprf-play-server-example/bin/*
 
 # Play
-bin/
-ssp-fe/conf/generated.keystore
-.cache-tests
-.cache-main
+cdprf-play-server-example/.cache-main
+cdprf-play-server-example/.cache-tests
+cdprf-play-server-example/bin/
+cdprf-play-server-example/conf/generated.keystore
 RUNNING_PID
