@@ -27,3 +27,4 @@ cdprf-play-server-example/.cache-tests
 cdprf-play-server-example/bin/
 cdprf-play-server-example/bin/activator
 cdprf-play-server-example/bin/activator.bat
+cdprf-play-server-example/bin/application.conf
