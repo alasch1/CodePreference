@@ -26,5 +26,6 @@ target/
 cdprf-play-server-example/.cache-main
 cdprf-play-server-example/.cache-tests
 cdprf-play-server-example/bin/
+cdprf-play-server-example/bin/*
 cdprf-play-server-example/conf/generated.keystore
 RUNNING_PID
