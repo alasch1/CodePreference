@@ -1,5 +1,7 @@
 package com.alasch1.mocking.examples.argumentCapture;
 
+import static org.junit.Assert.assertFalse;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,8 +19,6 @@ import com.alasch1.cdprf.mocking.argumentCapture.FooService;
 import com.alasch1.cdprf.mocking.argumentCapture.FooService.BarService;
 import com.alasch1.cdprf.mocking.argumentCapture.FooService.Foo;
 import com.alasch1.cdprf.mocking.argumentCapture.FooService.RedisService;
-
-import junit.framework.Assert;
 
 public class TestFooService {
 	
@@ -42,7 +42,7 @@ public class TestFooService {
 		Mockito.verify(barService).batchAddFoos(fooListCaptor.capture());
 		List<Foo> fooList = fooListCaptor.getValue();
 		//Assert.assertNotNull(fooList.get(0).getCode());
-		Assert.assertFalse(fooList.isEmpty());
+		assertFalse(fooList.isEmpty());
 		List<String> codeList = new ArrayList<>();
 		for (Foo foo : fooList) {
 			//foo.setCode("aaa");
@@ -52,7 +52,5 @@ public class TestFooService {
 		System.out.println(Arrays.toString(codeList.toArray()));
 		Mockito.verify(rediceService).sadd("foo_codes", codeList.toArray(new String[]{}));
 	}
-
-
 
 }
