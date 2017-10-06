@@ -79,13 +79,7 @@
 <!-- 			<appenderRef ref="TestConsole" /> -->
 		</root>
 
-		<logger name="controllers" level="debug" additivity="false">
-			<appenderRef ref="SysOut" />
-			<appenderRef ref="AppLog" />
-			<appenderRef ref="ErrorsLog" />
-		</logger>
-
-		<logger name="com.att.tlv.cspl" level="debug" additivity="false">
+		<logger name="com.alasch1" level="debug" additivity="false">
 			<appenderRef ref="SysOut" />
 			<appenderRef ref="AppLog" />
 			<appenderRef ref="ErrorsLog" />

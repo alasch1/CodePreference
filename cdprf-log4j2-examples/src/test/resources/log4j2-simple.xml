@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration  monitorInterval="300" status="warn" packages="com.alasch1.logging.plugins">
+	<Properties>
+		<property name="baseDir">${bundle:logCommons:baseDir}</property>
+		<property name="tag1">${ddd}</property>
+		<property name="tag2">${bundle:logCommons:tag2}</property>
+		<property name="patternFormat">%p %d{EEE, dd MMM yyyy HH':'mm':'ss } %m%n</property>
+	</Properties>
+
+	<Appenders>
+		<Console name="SysOut">
+			<!-- Layout with method and line -->
+			<PatternLayout>
+				<pattern>
+					${patternFormat}
+				</pattern>
+			</PatternLayout>
+		</Console>
+
+	</Appenders>
+
+	<Loggers>
+		<root level="info">
+<!-- 			<appenderRef ref="TestConsole" /> -->
+			<appenderRef ref="SysOut" />
+		</root>
+
+		<logger name="com.alasch1" level="debug" additivity="false">
+			<appenderRef ref="SysOut" />
+		</logger>
+
+	</Loggers>
+</Configuration>
